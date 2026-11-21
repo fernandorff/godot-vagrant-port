@@ -301,11 +301,23 @@ func _testes() -> bool:
 		var t0 := Time.get_ticks_msec()
 		print("ANDAR rota ", u.rota.size(), " casas")
 		var meio := _arg("png-andando")
+		var quadros: Array = []  # [ms do quadro, velocidade, trocou de casa] para achar o tranco ao trocar de casa
+		var p_ant := u.no.position
+		var c_ant := u.c
+		var t_ant := Time.get_ticks_usec()
 		while u.rota.size():
 			await get_tree().process_frame
+			var agora := Time.get_ticks_usec()
+			var dt_ms := (agora - t_ant) / 1000.0
+			var pos := u.no.position
+			quadros.append([dt_ms, Vector2(pos.x - p_ant.x, pos.z - p_ant.z).length() / maxf(dt_ms / 1000.0, 0.0001), u.c != c_ant])
+			t_ant = agora
+			p_ant = pos
+			c_ant = u.c
 			if meio != "" and Time.get_ticks_msec() - t0 > 1500:
 				_print_png(meio)
 				meio = ""
+		if "--tranco" in args: _relata_tranco(quadros)
 		print("ANDAR chegou em %.2f s, pos %s, rot %.3f, gesto %s" % [(Time.get_ticks_msec() - t0) / 1000.0, u.no.position, u.no.rotation.y, u.atual])
 		await get_tree().create_timer(1.0).timeout
 		_print_png(png)
@@ -313,6 +325,30 @@ func _testes() -> bool:
 		return false
 	get_tree().quit()
 	return true
+
+func _relata_tranco(q: Array) -> void:  # --tranco: quadro lento ou velocidade que cai, perto da troca de casa?
+	var meio := q.slice(10, q.size() - 10)  # sem a partida e a chegada
+	var ms: Array = meio.map(func(x: Array) -> float: return x[0])
+	var vs: Array = meio.map(func(x: Array) -> float: return x[1])
+	ms.sort(); vs.sort()
+	var ms_med: float = ms[ms.size() / 2]
+	var v_med: float = vs[vs.size() / 2]
+	var lentos := 0; var lentos_troca := 0; var quedas := 0; var quedas_troca := 0; var trocas := 0
+	for i in range(10, q.size() - 10):
+		var perto: bool = q[i][2] or q[i - 1][2] or q[i + 1][2]
+		if q[i][2]: trocas += 1
+		if q[i][0] > ms_med * 1.8:
+			lentos += 1
+			if perto: lentos_troca += 1
+		if q[i][1] < v_med * 0.6:
+			quedas += 1
+			if perto: quedas_troca += 1
+	print("TRANCO quadros %d, trocas de casa %d | ms mediano %.2f, quadros lentos (>1,8x) %d, perto da troca %d | velocidade mediana %.2f, quedas (<0,6x) %d, perto da troca %d" % [meio.size(), trocas, ms_med, lentos, lentos_troca, v_med, quedas, quedas_troca])
+	var amostra: Array = []
+	for i in range(10, q.size() - 10):
+		if q[i][2]: amostra.append("%s" % [q.slice(i - 3, i + 4).map(func(x: Array) -> String: return "%.1fms/%.2f%s" % [x[0], x[1], "*" if x[2] else ""])])
+		if amostra.size() == 3: break
+	for a: String in amostra: print("  em volta da troca: ", a)
 
 func _diag() -> void:  # soma os triângulos das malhas visíveis na árvore e dentro do frustum da câmera (conferência do contador)
 	var cam := get_viewport().get_camera_3d()
@@ -468,6 +504,7 @@ func _bonecos() -> void:
 	bonecos.process_priority = -1  # anda antes da câmera e das luzes, como o quadro() da página
 	add_child(bonecos)
 	bonecos.montar(raiz, base.get_animation_library(""), base.get_node(base.root_node), meta.unidades, grade)
+	base.active = false  # o player do .glb, parado, regravava a pose inicial em todos os ossos a cada quadro (medido 21/11)
 	
 	base.queue_free()
 	var sh: Shader = load("res://boneco.gdshader")
