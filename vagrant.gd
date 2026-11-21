@@ -201,6 +201,20 @@ func _testes() -> bool:
 		var aneis := rio.aneis.slots.filter(func(a: Vector4) -> bool: return a.z > 0.0).size()
 		print("RIO andou %.2f, lento %.2f, molhado %s, y %.3f, anéis %d, gotas %d" % [(u.no.position - p0).length(), u.lento, Grade.molha(u.no.position), u.no.position.y, aneis, rio.vivas])
 		_print_png(png)
+	elif "--gestos-todos" in args:  # cada boneco toca cada gesto 0,6 s; conta as poses distintas do 2º osso do seu esqueleto
+		for b: Unidade in bonecos.unidades:
+			var an0 := b.player.get_animation(b.player.current_animation)
+			var sk := b.player.get_node(b.player.root_node).get_node(NodePath(an0.track_get_path(0).get_concatenated_names())) as Skeleton3D
+			var linha: Array = []
+			for g: String in b.gestos:
+				b.toca(g)
+				var vistas := {}
+				for i in 36:
+					await get_tree().process_frame
+					vistas[str(sk.get_bone_pose_rotation(1).get_euler().snappedf(0.001))] = true
+				linha.append("%s %d" % [g, vistas.size()])
+				b.toca("parado")
+			print("GESTOS %s: %s" % [b.nome, linha])
 	elif "--controle-real" in args:  # ouve o controle de verdade até o Back (ou 30 s): cada botão e eixo, o menu e onde o herói foi
 		print("CONTROLE-REAL: aperte os botões agora (Back encerra); aparelhos: %s" % [Input.get_connected_joypads().map(func(d: int) -> String: return Input.get_joy_name(d))])
 		menu.opcao_mudou.connect(func(k: StringName, v: Variant) -> void: print("  menu: %s = %s" % [k, v]))
