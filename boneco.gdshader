@@ -6,6 +6,7 @@ uniform sampler2D tex : source_color, filter_nearest;
 uniform float scissor = 0.5;
 uniform bool usa_cor_vertice = false;
 uniform bool some = true;
+uniform bool antes = false;  // "Como antes" da página: luz plana no corpo (ambiente x2 + tochas no peito x0,5), nunca some
 uniform vec3 cor_luz = vec3(1.0, 0.62, 0.3);
 uniform int n_fogos = 0;
 uniform vec4 fogos[24];  // xyz posição no mundo; w = intensidade do Three (força x tremor)
@@ -39,12 +40,23 @@ void fragment() {
 		s += fora.y * max(hm.r, max(hm.g, hm.b));
 		if (smoothstep(0.0, 0.05, s) <= fino(FRAGCOORD.xy)) discard;
 	}
+	if (antes && !IN_SHADOW_PASS) {  // sala-fechada.html:1650-1659
+		// shortcut: queda medida em cada pixel (não no peito) e sem cortar as 2 primeiras tochas pela sombra; trocar se
+		// o boneco ficar claro atrás de uma parede
+		vec3 lp = vec3(0.08, 0.09, 0.14);  // AMBIENTE x2 (sala-fechada.html:82)
+		for (int i = 0; i < n_fogos; i++) {
+			float q = max(0.0, 1.0 - length(fogos[i].xyz - wpos) / fogos_cor[i].a);
+			lp += fogos_cor[i].rgb * fogos[i].w * q * q * 0.5;
+		}
+		EMISSION = ALBEDO * min(lp, vec3(1.2));
+	}
 	vec3 nw = normalize((INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
-	EMISSION = ALBEDO * mix(hemi_chao, hemi_ceu, 0.5 * nw.y + 0.5) * fora.y;  // luz do céu (hemisfério), sem sombra como no Three
+	if (!antes) EMISSION = ALBEDO * mix(hemi_chao, hemi_ceu, 0.5 * nw.y + 0.5) * fora.y;  // luz do céu (hemisfério), sem sombra como no Three
 }
 uniform float atenuacao_godot = 0.9;  // omni_attenuation das tochas (vagrant.gd)
 uniform bool ver_sombra = false;      // diagnóstico --ver-sombra: o corpo mostra só a sombra do sol (branco = sem sombra)
 void light() {
+	if (!antes) {  // no "Como antes" a luz plana já está no EMISSION
 	if (LIGHT_IS_DIRECTIONAL) {  // o sol: a cor e a meia Lambert da página; do Godot só a sombra (ATTENUATION)
 		// o Godot zera a sombra nas faces de costas para o sol mesmo sem nada projetando (medido 21/11 com o corpo sem
 		// sombra); a página ali dá a meia luz. shortcut: de costas para o sol, sem a sombra das árvores; trocar se as costas
@@ -67,5 +79,6 @@ void light() {
 	float q = pow(max(1.0 - pow(d / a, 4.0), 0.0), 2.0) * pow(max(d, 0.0001), -atenuacao_godot);
 	float sombra = q > 0.0001 ? clamp(ATTENUATION / q, 0.0, 1.0) : 0.0;
 	DIFFUSE_LIGHT += cor * w * j * j * 16.0 / (d * d + 16.0) * (0.2 + 0.4 * (dot(NORMAL, LIGHT) + 1.0)) * sombra;
+}
 }
 }

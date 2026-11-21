@@ -17,6 +17,7 @@ var modo_sombra := "suave"
 var pcss := false
 var tremor_on := true
 var some := true
+var antes := false  # "Como antes": luz plana, o boneco nunca some
 var fumaca_on := true
 var meta: Dictionary
 var bonecos: Bonecos
@@ -357,6 +358,7 @@ func _process(dt: float) -> void:
 		m.set_shader_parameter("fogos_cor", fc)
 		m.set_shader_parameter("n_fogos", fs.size())
 		m.set_shader_parameter("some", some)
+		m.set_shader_parameter("antes", antes)
 
 func aplicar_sombras() -> void:
 	# sala-fechada.html:692-699: só as 2 primeiras luzes projetam; dura = mapa 128 sem filtro, suave = 512 com PCF

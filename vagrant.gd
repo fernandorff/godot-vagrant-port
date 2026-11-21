@@ -34,6 +34,7 @@ var salas: Array[MeshInstance3D] = []  # as peças texturizadas da sala (daSala(
 var mats_boneco: Array[ShaderMaterial] = []
 var discos: Array[MeshInstance3D] = []  # a mancha escura sob cada boneco (some com ele, sala-fechada.html:1657)
 var some := true               # bonecos somem fora da luz (padrão da página); --some=0 desliga
+var antes := false             # --antes=1: "Como antes" da página, luz plana e o boneco nunca some
 var fumaca_on := true
 var camera: CameraOrbita
 var orbita_arg := ""           # --orbita=az,dist,polar (como o window.sala.gira da página)
@@ -73,6 +74,9 @@ func _ready() -> void:
 		elif a.begins_with("--sombras="): modo_sombra = a.substr(10)
 		elif a.begins_with("--pcss="): pcss = a.substr(7) == "1"
 		elif a.begins_with("--some="): some = a.substr(7) == "1"
+		elif a.begins_with("--antes="):
+			antes = a.substr(8) == "1"
+			if antes: some = false
 		elif a.begins_with("--fumaca="): fumaca_on = a.substr(9) == "1"
 		elif a.begins_with("--orbita="):  # az,dist,polar (como o window.sala.gira da página)
 			orbita_arg = a.substr(9)
@@ -633,7 +637,7 @@ static func _v3(c: Color) -> Vector3:  # valor bruto num vec3 (Color num uniform
 
 func _iluminacao() -> void:  # a configuração desce para o nó das luzes; o pedido de clarão sobe dos bonecos
 	iluminacao = Luzes.new()
-	for k in ["energia_ponto", "atenuacao", "cor_three", "caso", "modo_sombra", "pcss", "tremor_on", "some", "fumaca_on",
+	for k in ["energia_ponto", "atenuacao", "cor_three", "caso", "modo_sombra", "pcss", "tremor_on", "some", "antes", "fumaca_on",
 			"meta", "bonecos", "salas", "mats_boneco", "discos", "grade"]:
 		iluminacao.set(k, get(k))
 	add_child(iluminacao)
@@ -743,7 +747,8 @@ func _menu() -> void:  # F1 abre e fecha; cada opção troca na hora, sem reinic
 	menu.escolha(&"sombras", {"nao": "Sem sombra", "dura": "Dura (128 px, sem filtro)", "suave": "Suave (512 px, filtrada)"}, modo_sombra)
 	menu.caixa(&"pcss", "Penumbra (PCSS)", pcss)
 	menu.caixa(&"ssao", "Oclusão de ambiente (SSAO)", ssao)
-	menu.caixa(&"some", "Bonecos somem fora da luz", some)
+	menu.escolha(&"bonecos", {"some": "Bonecos: somem fora da luz", "direta": "Bonecos: só luz direta (lado escuro preto)",
+		"antes": "Bonecos: como antes (sempre aparecem)"}, "antes" if antes else "some" if some else "direta")
 	menu.caixa(&"particulas", "Brasas e poeira", true)
 	menu.caixa(&"fumaca", "Fumaça 3D (raios no ruído)", fumaca_on)
 	menu.caixa(&"lm", "Luz assada (rebatida das tochas)", lm_on)
@@ -766,6 +771,9 @@ func _aplicar_opcao(chave: StringName, valor: Variant) -> void:
 			ssao = valor
 			_aplicar_ssao(_env())
 		&"some": il.some = valor
+		&"bonecos":  # sala-fechada.html:217
+			il.some = valor == "some"
+			il.antes = valor == "antes"
 		&"particulas":
 			il.particulas_on = valor
 			for b in il.brasas: b.visible = valor
