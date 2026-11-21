@@ -12,6 +12,9 @@ var _aviso: Label
 var _aviso_t := 0.0
 
 func _ready() -> void:
+	var a := InputEventJoypadButton.new()  # o ui_accept padrão do Godot não tem o A do controle (medido 21/11)
+	a.button_index = JOY_BUTTON_A
+	InputMap.action_add_event(&"ui_accept", a)
 	_fps = Label.new()
 	_fps.position = Vector2(1100, 8)
 	_fps.add_theme_font_size_override("font_size", 18)
@@ -44,6 +47,10 @@ func _unhandled_input(ev: InputEvent) -> void:
 	var start: bool = ev is InputEventJoypadButton and ev.pressed and (ev as InputEventJoypadButton).button_index == JOY_BUTTON_START
 	if start or ev is InputEventKey and ev.pressed and not ev.echo and (ev as InputEventKey).keycode == KEY_F1:
 		_painel.visible = not _painel.visible
+		# foco no primeiro item: o direcional e o A (ui_up/ui_down/ui_accept padrão do Godot) navegam pelo controle
+		var primeiro := _lista.get_children().filter(func(c: Node) -> bool: return c is BaseButton)
+		if _painel.visible and not primeiro.is_empty(): (primeiro[0] as Control).grab_focus()
+		elif not _painel.visible: get_viewport().gui_release_focus()
 
 func aviso(texto: String) -> void:  # recado curto no rodapé por 2 s (o aviso.mostrar da página)
 	_aviso.text = texto

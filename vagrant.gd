@@ -201,12 +201,16 @@ func _testes() -> bool:
 		var aneis := rio.aneis.slots.filter(func(a: Vector4) -> bool: return a.z > 0.0).size()
 		print("RIO andou %.2f, lento %.2f, molhado %s, y %.3f, anéis %d, gotas %d" % [(u.no.position - p0).length(), u.lento, Grade.molha(u.no.position), u.no.position.y, aneis, rio.vivas])
 		_print_png(png)
-	elif "--controle-real" in args:  # 12 s ouvindo o controle de verdade (cabe antes do fim da medição com --saida): cada botão e eixo, e onde o herói foi
-		print("CONTROLE-REAL: aperte os botões agora (12 s); aparelhos: %s" % [Input.get_connected_joypads().map(func(d: int) -> String: return Input.get_joy_name(d))])
+	elif "--controle-real" in args:  # ouve o controle de verdade até o Back (ou 30 s): cada botão e eixo, o menu e onde o herói foi
+		print("CONTROLE-REAL: aperte os botões agora (Back encerra); aparelhos: %s" % [Input.get_connected_joypads().map(func(d: int) -> String: return Input.get_joy_name(d))])
+		menu.opcao_mudou.connect(func(k: StringName, v: Variant) -> void: print("  menu: %s = %s" % [k, v]))
 		var p0 := u.no.position
 		var az0 := camera.az
-		await get_tree().create_timer(12.0).timeout
+		if _arg("sinal") != "": FileAccess.open(_arg("sinal"), FileAccess.WRITE).store_string("ouvindo")  # o stdout sai em blocos: o script do controle espera este arquivo
+		var fim := Time.get_ticks_msec() + 30000
+		while Time.get_ticks_msec() < fim and not Input.is_joy_button_pressed(0, JOY_BUTTON_BACK): await get_tree().process_frame
 		print("CONTROLE-REAL fim: herói andou %.2f, câmera girou %.2f rad, escolhido %s, peso %s" % [(u.no.position - p0).length(), camera.az - az0, bonecos.sel.nome, Unidade.peso])
+		get_tree().quit()
 	elif "--controle" in args:  # o controle por eventos: analógico anda, A pula, X golpe, LB troca, RS gira a câmera
 		var ev := InputEventJoypadMotion.new()
 		ev.axis = JOY_AXIS_LEFT_Y
@@ -524,7 +528,7 @@ func _efeitos() -> void:  # contrato dos módulos (godot-candidatos/CONTRATO-MOD
 
 func _input(ev: InputEvent) -> void:  # --controle-real: mostra cada botão e cada eixo que chega
 	if not "--controle-real" in OS.get_cmdline_user_args(): return
-	if ev is InputEventJoypadButton: print("  botão %d %s" % [ev.button_index, "aperta" if ev.pressed else "solta"])
+	if ev is InputEventJoypadButton: print("  botão %d %s (foco: %s)" % [ev.button_index, "aperta" if ev.pressed else "solta", get_viewport().gui_get_focus_owner()])
 	elif ev is InputEventJoypadMotion and absf(ev.axis_value) > 0.5: print("  eixo %d %.2f" % [ev.axis, ev.axis_value])
 
 func _brilho_poeira() -> float:  # soma do vermelho dos grãos (teste --fixa)
@@ -657,7 +661,7 @@ func _env() -> Environment:
 
 func _process(dt: float) -> void:
 	bonecos.az_camera = camera.az
-	if saida == "" or not pronto or _arg("andar") != "":
+	if saida == "" or not pronto or _arg("andar") != "" or "--controle-real" in OS.get_cmdline_user_args():  # o teste do controle fecha sozinho
 		return
 	t += dt
 	if rapido and t > 1.5:  # só o print (calibração de brilho)

@@ -178,6 +178,10 @@ Origem: **[medido]** = rodado nesta noite; **[dedução]** = não provado.
   - Sem controle real conectado: falta testar com o controle de verdade.
   - 21/11, controle de Xbox virtual (ViGEmBus + `vgamepad`, script em Python) com `--controle-real`: o Godot viu "XInput Controller" e recebeu os 17 comandos (analógicos, RT, LT, A, X, B, Y, LB, RB, direcional cima e baixo, RS, Start duas vezes). No fim, o herói andou 4,54, a câmera girou −1,75 rad e o escolhido mudou de herói **[medido]**.
   - Falta o controle físico na mão: o virtual prova a leitura dos botões, não a sensação de jogo.
+  - Menu pelo controle (`python dev/controle-virtual.py --menu --sinal=<arq>`): Start abre e foca o primeiro item, o direcional desce e o A marca e desmarca (`ssao = true`, depois `false`) **[medido]**.
+    - O `ui_accept` padrão do Godot não tem o botão A (só Enter e Espaço) **[medido]**; o menu o acrescenta no `_ready`.
+    - O teste agora ignora a medição do `--saida`, cria um arquivo-sinal ao começar (a saída do Godot só chega ao arquivo aos blocos) e termina com o Back.
+    - Não verificado: com o menu aberto, o A provavelmente também faz o herói pular **[dedução]**.
 - **Rio (etapa 8)** (`rio.gd` + `rio.gdshader`): o shader do rio da página (cópia do módulo `agua/nativo`, com saída bruta).
   - Anéis nos pés dos 8 bonecos ao vivo; passo a 0,65 dentro d'água; o disco de sombra some na água.
   - `--rio`, 2 s com S dentro do rio: Godot 2,63 contra 2,65 na página **[medido]**; cor média da água igual (31,5/26,6/24,3 contra 33,4/27,5/25,4).
