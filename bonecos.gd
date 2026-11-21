@@ -23,6 +23,13 @@ var eixos := {}                  # eixo do controle -> valor, pelos eventos (ass
 var usa_fixa: Callable           # RS apertado: só a tocha fixa perto (na página o RS não abre porta)
 var usa: Callable                # E: a cena tenta a porta e a tocha fixa perto; devolve false se não havia nada (aí E troca)
 
+static func so_do_boneco(an: Animation, nome: String) -> void:
+	# o glTF põe em cada clipe trilhas paradas de TODOS os esqueletos; sem tirá-las, o player de cada boneco
+	# regravava a pose dos outros a cada quadro e ninguém se mexia (medido 21/11: 228 trilhas, 28 variam)
+	var prefixo := nome.get_slice("_", 0) + "_"  # u0_c3 -> "u0_", o mesmo prefixo dos ossos u0_b*
+	for i in range(an.get_track_count() - 1, -1, -1):
+		if not an.track_get_path(i).get_concatenated_subnames().begins_with(prefixo): an.remove_track(i)
+
 func montar(raiz: Node, lib: AnimationLibrary, raiz_anim: Node, defs: Array, g: Grade) -> void:
 	grade = g
 	for d: Dictionary in defs:
@@ -34,6 +41,7 @@ func montar(raiz: Node, lib: AnimationLibrary, raiz_anim: Node, defs: Array, g: 
 				var an: Animation = lib.get_animation(nome)
 				an.length = d.duracoes[nome]  # a duração do clipe do Three (o glTF só guarda até a última chave)
 				an.loop_mode = Animation.LOOP_LINEAR if gesto == "parado" else Animation.LOOP_NONE  # só o parado repete; andar alterna as metades
+				so_do_boneco(an, nome)
 				l.add_animation(nome, an)
 		for modo: String in d.poses:
 			if d.poses[modo] == null: continue
@@ -42,6 +50,7 @@ func montar(raiz: Node, lib: AnimationLibrary, raiz_anim: Node, defs: Array, g: 
 				var ap: Animation = lib.get_animation(nome_pose)
 				ap.length = d.duracoes[nome_pose]
 				ap.loop_mode = Animation.LOOP_LINEAR  # poeFase: LoopRepeat
+				so_do_boneco(ap, nome_pose)
 				l.add_animation(nome_pose, ap)
 		raiz.add_child(p)
 		p.root_node = p.get_path_to(raiz_anim)

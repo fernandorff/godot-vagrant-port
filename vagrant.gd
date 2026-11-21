@@ -208,16 +208,23 @@ func _testes() -> bool:
 		var az0 := camera.az
 		if _arg("sinal") != "": FileAccess.open(_arg("sinal"), FileAccess.WRITE).store_string("ouvindo")  # o stdout sai em blocos: o script do controle espera este arquivo
 		var fim := Time.get_ticks_msec() + 30000
+		var an0 := u.player.get_animation(u.player.current_animation)  # o esqueleto que o player anima (o da trilha)
+		var esq := u.player.get_node(u.player.root_node).get_node(NodePath(an0.track_get_path(0).get_concatenated_names())) as Skeleton3D
+		var poses_por_gesto := {}  # gesto (ou fase do pulo) -> rotações distintas de um osso: >1 = o esqueleto mexe
 		var gestos_no_menu := {}  # o que o herói fez com o menu aberto (deve ficar vazio)
 		var andou_no_menu := 0.0
 		var antes := u.no.position
 		while Time.get_ticks_msec() < fim and not Input.is_joy_button_pressed(0, JOY_BUTTON_BACK):
 			await get_tree().process_frame
+			var g: String = u.atual if u.atual != "" else "pose"
+			if not poses_por_gesto.has(g): poses_por_gesto[g] = {}
+			poses_por_gesto[g][str(esq.get_bone_pose_rotation(1).get_euler().snappedf(0.001))] = true
 			if MenuOpcoes.aberto:
 				andou_no_menu += (u.no.position - antes).length()
 				if u.atual != "parado": gestos_no_menu[u.atual] = true
 			antes = u.no.position
 		print("CONTROLE-REAL fim: herói andou %.2f, câmera girou %.2f rad, escolhido %s, peso %s; com o menu aberto andou %.2f, gestos %s; menu aberto no fim: %s" % [(u.no.position - p0).length(), camera.az - az0, bonecos.sel.nome, Unidade.peso, andou_no_menu, gestos_no_menu.keys(), MenuOpcoes.aberto])
+		print("CONTROLE-REAL poses distintas por gesto: %s" % [poses_por_gesto.keys().map(func(k: String) -> String: return "%s %d" % [k, poses_por_gesto[k].size()])])
 		get_tree().quit()
 	elif "--controle" in args:  # o controle por eventos: analógico anda, A pula, X golpe, LB troca, RS gira a câmera
 		var ev := InputEventJoypadMotion.new()
