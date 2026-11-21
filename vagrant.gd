@@ -113,7 +113,9 @@ func _ready() -> void:
 	rio.montar(nos, bonecos, meta, cor_three)
 	bonecos.usa = _usa_perto
 	bonecos.usa_fixa = _usa_fixa
-	bonecos.peso_trocou.connect(func(p: String) -> void: menu.aviso("Peso do boneco: " + p))
+	bonecos.peso_trocou.connect(func(p: String) -> void:
+		menu.aviso("Peso do boneco: " + p)
+		menu.poe(&"peso", p))
 	if await _testes(): return
 	if "--diag" in OS.get_cmdline_user_args():
 		await get_tree().create_timer(1.0).timeout
@@ -229,6 +231,39 @@ func _testes() -> bool:
 		var pulou := u.pulando
 		toque.call(2, a_pos, false)
 		print("TOQUE andou %.2f, câmera girou %.2f rad, pulou %s" % [andou, camera.az - az0, pulou])
+	elif "--menu-tudo" in args:  # cada opção do menu: muda, espera e mede o brilho médio da tela e o fps (prova que cada uma faz algo)
+		var brilho := func() -> float:
+			var img := get_viewport().get_texture().get_image()
+			img.resize(64, 36)
+			var soma := 0.0
+			for y in 36: for x in 64: soma += img.get_pixel(x, y).get_luminance()
+			return soma / (64.0 * 36.0) * 1000.0
+		await get_tree().create_timer(1.0).timeout
+		print("MENU-TUDO base brilho %.1f" % brilho.call())
+		for chave: StringName in menu._ctl:
+			var c: Control = menu._ctl[chave]
+			if c is CheckBox:
+				var cb := c as CheckBox
+				if cb.disabled: print("MENU-TUDO %s desabilitada" % chave); continue
+				cb.button_pressed = not cb.button_pressed
+				await get_tree().create_timer(0.4).timeout
+				print("MENU-TUDO %s = %s brilho %.1f fps %d" % [chave, cb.button_pressed, brilho.call(), Engine.get_frames_per_second()])
+				cb.button_pressed = not cb.button_pressed
+				await get_tree().create_timer(0.2).timeout
+			elif c is OptionButton:
+				var ob := c as OptionButton
+				var orig := ob.selected
+				for i in ob.item_count:
+					ob.select(i)
+					ob.item_selected.emit(i)
+					await get_tree().create_timer(0.4).timeout
+					print("MENU-TUDO %s = %s brilho %.1f fps %d" % [chave, menu._valores[chave][i], brilho.call(), Engine.get_frames_per_second()])
+				ob.select(orig)
+				ob.item_selected.emit(orig)
+				await get_tree().create_timer(0.2).timeout
+		print("MENU-TUDO relatorio: " + _relatorio().replace("
+", " | "))
+		_print_png(png)
 	elif "--menu-toque" in args:  # celular: toque no ☰ abre o menu, toque numa caixa muda a opção, toque em Fechar fecha
 		menu.opcao_mudou.connect(func(k: StringName, v: Variant) -> void: print("  menu: %s = %s" % [k, v]))
 		var toca_em := func(p: Vector2) -> void:
@@ -239,13 +274,27 @@ func _testes() -> bool:
 		var menu_bt: Control = tq._bases.filter(func(par: Array) -> bool: return par[1][0] == "Menu")[0][0]
 		await toca_em.call(menu_bt.get_global_rect().get_center())
 		await get_tree().create_timer(0.3).timeout
-		var caixa: CheckBox = menu._lista.get_children().filter(func(c: Node) -> bool: return c is CheckBox)[0]
-		print("MENU-TOQUE aberto %s, caixa '%s' em %s" % [MenuOpcoes.aberto, caixa.text, caixa.get_global_rect()])
+		var grupo: Button = menu._grupos[0][0]
+		await toca_em.call(grupo.get_global_rect().get_center())  # abre o grupo Cena
+		await get_tree().create_timer(0.3).timeout
+		var caixa: CheckBox = menu.controle(&"tocha-1")
+		print("MENU-TOQUE aberto %s, grupo '%s' aberto %s, caixa '%s' em %s" % [MenuOpcoes.aberto, grupo.text, menu._grupos[0][1].visible, caixa.text, caixa.get_global_rect()])
 		await toca_em.call(caixa.get_global_rect().get_center())
 		await get_tree().create_timer(0.3).timeout
+		menu.abre_grupo(1)  # o cabeçalho de Luz está abaixo das 18 tochas, fora da vista com Cena aberto
+		await get_tree().create_timer(0.3).timeout
+		var ob: OptionButton = menu.controle(&"escuro")
+		await toca_em.call(ob.get_global_rect().get_center())
+		await get_tree().create_timer(0.4).timeout
+		var pm := ob.get_popup()
+		var alvo := Vector2(pm.position) + Vector2(pm.size.x * 0.5, pm.size.y * 0.75)  # o 2º de 2 itens
+		print("MENU-TOQUE lista aberta %s em %s tamanho %s; toque em %s" % [pm.visible, pm.position, pm.size, alvo])
+		await toca_em.call(alvo)
+		await get_tree().create_timer(0.4).timeout
+		print("MENU-TOQUE luz da sala escolhida: %s (lista aberta %s)" % [ob.get_item_text(ob.selected), pm.visible])
 		await toca_em.call(menu._fechar.get_global_rect().get_center())
 		await get_tree().create_timer(0.3).timeout
-		print("MENU-TOQUE caixa marcada %s, menu aberto no fim %s, botões de toque visíveis %s" % [caixa.button_pressed, MenuOpcoes.aberto, menu_bt.visible])
+		print("MENU-TOQUE tocha 1 marcada %s, apagada no jogo %s, menu aberto no fim %s, botões de toque visíveis %s" % [caixa.button_pressed, iluminacao.fixas[0].apagada, MenuOpcoes.aberto, menu_bt.visible])
 		_print_png(png)
 	elif "--mistura" in args:  # formato da mistura entre 2 poses paradas do pulo (0,5 s): fração do caminho em 20/50/80% do tempo
 		var an0 := u.player.get_animation(u.clipe_atual())
@@ -666,6 +715,22 @@ func _input(ev: InputEvent) -> void:  # --controle-real: mostra cada botão e ca
 	if ev is InputEventJoypadButton: print("  botão %d %s (foco: %s)" % [ev.button_index, "aperta" if ev.pressed else "solta", get_viewport().gui_get_focus_owner()])
 	elif ev is InputEventJoypadMotion and absf(ev.axis_value) > 0.5: print("  eixo %d %.2f" % [ev.axis, ev.axis_value])
 
+func _muda(chave: StringName, valor: Variant) -> void:  # tecla de atalho: aplica e mostra no menu
+	menu.poe(chave, valor)
+	_aplicar_opcao(chave, valor)
+
+func _unhandled_key_input(ev: InputEvent) -> void:  # atalhos da página (sala-fechada.html:1389)
+	var k := ev as InputEventKey
+	if not k.pressed or k.echo: return
+	var il := iluminacao
+	match k.keycode:
+		KEY_1: _muda(&"sombras", "nao" if il.modo_sombra != "nao" else "suave")
+		KEY_2: _muda(&"part", "nao" if _part != "nao" else "todas")
+		KEY_3: _muda(&"fumaca", not il.fumaca_on)
+		KEY_4: _tecla4()
+		KEY_5: _muda(&"res", {1.0: "0.75", 0.75: "0.5"}.get(get_viewport().scaling_3d_scale, "1"))
+		KEY_8: _muda(&"escuro", "0" if il.escuro else "1")
+
 func _brilho_poeira() -> float:  # soma do vermelho dos grãos (teste --fixa)
 	var s := 0.0
 	for i in iluminacao.poeira0.size(): s += iluminacao.poeira.multimesh.get_instance_color(i).r
@@ -675,7 +740,7 @@ func _usa_fixa() -> bool:
 	var f := iluminacao.perto_de(bonecos.sel.no.position, 2.0)
 	if f == null: return false
 	f.apagada = not f.apagada
-	iluminacao.tinge()
+	_pinta_tochas()
 	return true
 
 func _usa_perto() -> bool:  # tecla E (sala-fechada.html:1388): a porta perto, senão a tocha fixa perto
@@ -737,26 +802,203 @@ func _por_lm(on: bool) -> void:
 			f.close()
 	if lm: lm.ligar(on)
 
-func _menu() -> void:  # F1 abre e fecha; cada opção troca na hora, sem reiniciar
+func _menu() -> void:  # F1 abre e fecha; cada opção troca na hora, sem reiniciar. Os grupos e itens da página (sala-fechada.html:196-250)
 	menu = MenuOpcoes.new()
 	add_child(menu)
 	if DisplayServer.is_touchscreen_available() or "--toque" in OS.get_cmdline_user_args():  # celular: joysticks na tela e menu grande
 		add_child(Toque.new())
 		menu.modo_toque()
-	menu.titulo("Sombras das tochas")
-	menu.escolha(&"sombras", {"nao": "Sem sombra", "dura": "Dura (128 px, sem filtro)", "suave": "Suave (512 px, filtrada)"}, modo_sombra)
-	menu.caixa(&"pcss", "Penumbra (PCSS)", pcss)
-	menu.caixa(&"ssao", "Oclusão de ambiente (SSAO)", ssao)
-	menu.escolha(&"bonecos", {"some": "Bonecos: somem fora da luz", "direta": "Bonecos: só luz direta (lado escuro preto)",
-		"antes": "Bonecos: como antes (sempre aparecem)"}, "antes" if antes else "some" if some else "direta")
-	menu.caixa(&"particulas", "Brasas e poeira", true)
-	menu.caixa(&"fumaca", "Fumaça 3D (raios no ruído)", fumaca_on)
-	menu.caixa(&"lm", "Luz assada (rebatida das tochas)", lm_on)
+	var web := RenderingServer.get_current_rendering_method() == "gl_compatibility"  # no navegador SSAO e PCSS não existem
+	menu.medidas = _medidas
+	var il := iluminacao
+	menu.grupo("Cena", "tochas, sala, texturas")
+	menu.titulo("Tochas")
+	menu.caixa(&"todas", "Todas as tochas acesas (tecla 4)", il.fixas.all(func(f: Fonte) -> bool: return not f.apagada))
+	menu.escolha(&"acesas", {"manual": "Manual (uma a uma abaixo)", "0": "0 % acesas", "25": "25 % acesas", "50": "50 % acesas",
+		"75": "75 % acesas", "100": "100 % acesas"}, "manual", "Acesas ao acaso (sorteio com semente)")
+	menu.campo(&"semente", "Semente", _semente, "Sortear")
+	for i in il.fixas.size():
+		menu.caixa(StringName("tocha-%d" % (i + 1)), "%d. %s" % [i + 1, meta.fogos[i].nome], not il.fixas[i].apagada)
+	menu.info("Sala, texturas da sala e do mundo e água simulada: não portados (precisam de outro export da página).")
+	menu.grupo("Luz e sombras", "escuridão, névoa, hora, sombras")
+	menu.escolha(&"escuro", {"1": "Escuridão total", "0": "Penumbra azul"}, "1", "Luz da sala (tecla 8)")
+	menu.escolha(&"nevoa", {"desligada": "Desligada", "fraca": "Fraca", "hoje": "Como antes (8 a 42 casas)"}, "fraca", "Névoa de distância")
+	menu.escolha(&"hora", {"amanhecer": "Amanhecer", "meiodia": "Meio-dia", "fimdetarde": "Fim de tarde", "noite": "Noite"}, meta.hora, "Hora do dia")
+	menu.escolha(&"sombras", {"nao": "Desligadas", "dura": "Duras (128 px, sem filtro)", "suave": "Suaves (512 px, filtradas)"}, modo_sombra, "Tipo de sombra (tecla 1)")
+	menu.caixa(&"pcss", "Penumbra que alarga (PCSS)" + (" (só no PC)" if web else ""), pcss)
+	menu.caixa(&"ssao", "Cantos escurecidos (SSAO)" + (" (só no PC)" if web else ""), ssao)
+	if web:
+		(menu.controle(&"pcss") as BaseButton).disabled = true
+		(menu.controle(&"ssao") as BaseButton).disabled = true
+	menu.caixa(&"lm", "Luz rebatida assada (lightmap)", lm_on)
+	menu.caixa(&"claro", "Luz clara (diagnóstico)", claro)
+	menu.grupo("Bonecos", "luz, como somem, peso")
+	menu.escolha(&"bonecos", {"some": "Some fora da luz", "direta": "Só luz direta (lado escuro preto)",
+		"antes": "Como antes (sempre aparecem)"}, "antes" if antes else "some" if some else "direta", "Luz nos bonecos")
+	menu.escolha(&"como_some", {"abraca": "Luz que abraça (meia Lambert)", "inteiro": "Boneco inteiro", "agora": "Como estava (por face, pontilhado em grade)"},
+		"abraca", "Como o boneco some (só com Some fora da luz)")
+	menu.escolha(&"peso", {"leve": "Leve", "medio": "Médio", "pesado": "Pesado"}, Unidade.peso, "Peso do boneco (tecla P)")
+	menu.info("Malha dobrada ou suave e texturas 4K dos bonecos: não portadas (precisam de outro export).")
+	menu.grupo("Efeitos", "poeira, faíscas, fumaça, chamas")
+	menu.escolha(&"part", {"todas": "Muitas", "poucas": "Poucas", "brasas": "Só faíscas", "poeira": "Só poeira", "nao": "Desligadas"}, "todas", "Poeira e faíscas (tecla 2)")
+	menu.caixa(&"fumaca", "Fumaça 3D (tecla 3)", fumaca_on)
+	menu.escolha(&"f-dens", {"0": "0", "0.5": "0,5", "1": "1", "1.2": "1,2 (a de sempre)", "1.5": "1,5", "2": "2", "3": "3"}, "1.2", "Densidade da fumaça")
 	menu.caixa(&"tremor", "Tremor das chamas", tremor_on)
 	menu.caixa(&"chamas", "Chamas e halos", true)
-	menu.caixa(&"claro", "Luz clara (diagnóstico)", claro)
+	menu.grupo("Desempenho", "medidas, resolução, relatório")
+	menu.escolha(&"perfil", {"minimo": "Mínimo: só FPS", "efeitos": "Efeitos: quadro, chamadas, triângulos, luzes", "tudo": "Tudo"}, "minimo", "Medidas do canto")
+	menu.escolha(&"res", {"1": "1 (cheia)", "0.75": "0,75", "0.5": "0,5"}, "1", "Resolução 3D (tecla 5)")
+	menu.botao(&"copiar", "Copiar relatório")
+	menu.grupo("Controles", "teclas e botões")
+	for l: String in ["Andar: WASD ou setas · analógico esquerdo · joystick da esquerda", "Correr: Shift · RT · Corre", "Pular: Espaço · A",
+			"Golpe: K · X", "Fogo: F · B", "Raio: R · LT", "Tocha na mão: T · Y", "Trocar boneco: Q / E · LB / RB",
+			"Porta ou tocha perto: E · RS apertado", "Câmera: arrastar o mouse · analógico direito · joystick da direita",
+			"Teclas: 1 sombras · 2 partículas · 3 fumaça · 4 tochas · 5 resolução · 8 luz da sala · P peso · F1 menu"]:
+		menu.info(l)
+	menu.grupo("Candidatos do lab", "efeitos em teste no Godot")
 	efeitos.por_no_menu(menu)
 	menu.opcao_mudou.connect(_aplicar_opcao)
+
+var _perfil := "minimo"
+var _semente := 1
+var _part := "todas"
+
+func _medidas() -> String:
+	var t := "%d fps" % Engine.get_frames_per_second()
+	if _perfil == "minimo": return t
+	t += "\n%.1f ms" % (1000.0 / maxf(1.0, Engine.get_frames_per_second()))
+	t += "\n%d chamadas" % RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME)
+	t += "\n%dk triângulos" % (RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_PRIMITIVES_IN_FRAME) / 1000)
+	var vivas := iluminacao.luzes.filter(func(l: OmniLight3D) -> bool: return l.visible and l.light_energy > 0.0)
+	t += "\n%d luzes, %d com sombra" % [vivas.size(), vivas.filter(func(l: OmniLight3D) -> bool: return l.shadow_enabled).size()]
+	if _perfil == "tudo":
+		t += "\n%d MB de vídeo" % (RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_VIDEO_MEM_USED) / 1048576)
+		var tam := get_viewport().get_visible_rect().size
+		t += "\ntela %dx%d · 3D x%.2f" % [tam.x, tam.y, get_viewport().scaling_3d_scale]
+		t += "\n" + RenderingServer.get_current_rendering_method()
+	return t
+
+# ---- tochas (sala-fechada.html:905-946): o estado é o apagada de cada fixa; menu, E, tecla 4 e sorteio leem e escrevem ----
+var _tochas_antes: Array = []
+
+func _pinta_tochas(manual := true) -> void:
+	var il := iluminacao
+	for i in il.fixas.size(): menu.poe(StringName("tocha-%d" % (i + 1)), not il.fixas[i].apagada)
+	menu.poe(&"todas", il.fixas.all(func(f: Fonte) -> bool: return not f.apagada))
+	if manual: menu.poe(&"acesas", "manual")
+	il.tinge()
+
+static func _imul(a: int, b: int) -> int:  # Math.imul em 32 bits sem estourar o int de 64 bits do GDScript
+	return (a * (b & 0xFFFF) + (((a * (b >> 16)) & 0xFFFF) << 16)) & 0xFFFFFFFF
+
+static func sorteio(semente: int) -> Callable:  # mulberry32, o mesmo da página: a mesma semente acende as mesmas tochas
+	var st := [semente & 0xFFFFFFFF]
+	return func() -> float:
+		st[0] = (st[0] + 0x6d2b79f5) & 0xFFFFFFFF
+		var s: int = st[0]
+		var t := _imul(s ^ (s >> 15), 1 | s)
+		t = ((t + _imul(t ^ (t >> 7), 61 | t)) & 0xFFFFFFFF) ^ t
+		return float((t ^ (t >> 14)) & 0xFFFFFFFF) / 4294967296.0
+
+func _acaso(pct: String) -> void:
+	if pct == "manual": return
+	var il := iluminacao
+	var r := sorteio(_semente)
+	var ordem := range(1, il.fixas.size() + 1)
+	for i in range(ordem.size() - 1, 0, -1):
+		var j := floori(r.call() * (i + 1))
+		var x: int = ordem[i]
+		ordem[i] = ordem[j]
+		ordem[j] = x
+	var acesas := ordem.slice(0, roundi(il.fixas.size() * float(pct) / 100.0))
+	for i in il.fixas.size(): il.fixas[i].apagada = not (i + 1) in acesas
+	_pinta_tochas(false)
+
+func _todas(on: bool) -> void:
+	for f in iluminacao.fixas: f.apagada = not on
+	_pinta_tochas()
+
+func _tecla4() -> void:  # apaga todas e, de novo, devolve as que estavam acesas
+	var il := iluminacao
+	if il.fixas.any(func(f: Fonte) -> bool: return not f.apagada):
+		_tochas_antes = il.fixas.map(func(f: Fonte) -> bool: return f.apagada)
+		for f in il.fixas: f.apagada = true
+	else:
+		for i in il.fixas.size(): il.fixas[i].apagada = _tochas_antes[i] if _tochas_antes.size() == il.fixas.size() else false
+	_pinta_tochas()
+
+# ---- luz da sala, névoa e hora ----
+func _poe_escuro(on: bool) -> void:  # sala-fechada.html:958
+	var e := _env()
+	iluminacao.escuro = on
+	e.ambient_light_color = _col("#0a0b12")  # AMBIENTE (0,04 0,045 0,07)
+	e.ambient_light_energy = 0.0 if on else 1.0
+	iluminacao.tinge()
+
+const NEVOAS := {"desligada": 0.0, "fraca": 4.0, "hoje": 1.0}
+
+func _poe_nevoa(m: String) -> void:  # sala-fechada.html:1316: começa em 8 casas e acaba em 8 + 34 x k
+	var k: float = NEVOAS.get(m, 4.0)
+	nevoa = k > 0.0
+	_env().fog_enabled = nevoa and not claro
+	camera.nevoa_longe = meta.fog.near + (42.0 - meta.fog.near) * k
+	camera.poe()
+
+const HORAS := {  # planta-mundo.js:512
+	"amanhecer": {"el": 25, "az": -15, "sol": [1, 0.72, 0.5], "si": 1.1, "ceu": [0.45, 0.52, 0.75], "chao": [0.22, 0.18, 0.14], "ci": 0.55, "zen": "#3b5a8c", "hor": "#f2a878", "nev": "#9a8a8a", "estrelas": 0},
+	"meiodia": {"el": 45, "az": 100, "sol": [1, 0.96, 0.88], "si": 1.45, "ceu": [0.55, 0.65, 0.85], "chao": [0.25, 0.22, 0.16], "ci": 0.7, "zen": "#2f6fc4", "hor": "#b7d2ec", "nev": "#a8b8c8", "estrelas": 0},
+	"fimdetarde": {"el": 25, "az": 195, "sol": [1, 0.58, 0.32], "si": 1.25, "ceu": [0.42, 0.38, 0.58], "chao": [0.2, 0.14, 0.1], "ci": 0.5, "zen": "#26315e", "hor": "#e7834f", "nev": "#6e5a66", "estrelas": 0},
+	"noite": {"el": 40, "az": 140, "sol": [0.55, 0.65, 0.95], "si": 0.3, "ceu": [0.1, 0.13, 0.28], "chao": [0.03, 0.03, 0.05], "ci": 0.45, "zen": "#03050d", "hor": "#101a33", "nev": "#0c1020", "estrelas": 1},
+}
+
+func _poe_hora(nome: String) -> void:  # poeHora (planta-mundo.js:556): sol, céu, névoa e o rio
+	# shortcut: sem estrelas, janelas da casa e névoa baixa da clareira; trocar se a noite parecer vazia
+	var h: Dictionary = HORAS[nome]
+	meta.HORA = h
+	meta.hora = nome
+	var el := deg_to_rad(float(h.el))
+	var az := deg_to_rad(float(h.az))
+	var dir := Vector3(cos(el) * cos(az), sin(el), cos(el) * sin(az)).normalized()
+	var alvo := Vector3(meta.sol.alvo[0], meta.sol.alvo[1], meta.sol.alvo[2])
+	var c_sol := Color(h.sol[0], h.sol[1], h.sol[2])
+	var c_ceu := Color(h.ceu[0], h.ceu[1], h.ceu[2])
+	var c_chao := Color(h.chao[0], h.chao[1], h.chao[2])
+	var p := alvo + dir * 120.0
+	meta.sol.cor = "#" + c_sol.to_html(false)
+	meta.sol.intensidade = h.si
+	meta.sol.pos = [p.x, p.y, p.z]
+	meta.hemisferio = {"ceu": "#" + c_ceu.to_html(false), "chao": "#" + c_chao.to_html(false), "intensidade": h.ci}
+	var il := iluminacao
+	il.sol.light_color = _col(meta.sol.cor)
+	il.sol.light_energy = h.si
+	il.sol.look_at_from_position(p, alvo, Vector3.UP)
+	var e := _env()
+	var sk := e.sky.sky_material as ProceduralSkyMaterial
+	sk.sky_top_color = _col(h.zen)
+	sk.sky_horizon_color = _col(h.hor)
+	sk.ground_horizon_color = _col(h.hor)
+	sk.ground_bottom_color = _col(h.hor) * 0.3
+	e.fog_light_color = _col(h.nev)
+	for sm in mats_boneco:
+		sm.set_shader_parameter("sol_cor", _v3(c_sol) * float(h.si))
+		sm.set_shader_parameter("sol_dir", dir)
+		sm.set_shader_parameter("hemi_ceu", _v3(c_ceu) * float(h.ci))
+		sm.set_shader_parameter("hemi_chao", _v3(c_chao) * float(h.ci))
+	if rio and rio.mat:
+		rio.mat.set_shader_parameter("zen", Rio._rgb(Color(h.zen)))
+		rio.mat.set_shader_parameter("hor", Rio._rgb(Color(h.hor)))
+		rio.mat.set_shader_parameter("solCor", _v3(c_sol) * float(h.si))
+		rio.mat.set_shader_parameter("solDir", dir)
+		rio.mat.set_shader_parameter("ceuI", float(h.ci))
+
+func _relatorio() -> String:
+	var il := iluminacao
+	var acesas := il.fixas.filter(func(f: Fonte) -> bool: return not f.apagada).size()
+	return "Godot %s · %s · %s\n%s\nsombras: %s · partículas: %s · fumaça: %s · tochas acesas: %d de %d · escuridão total: %s · névoa: %s · hora: %s · bonecos: %s · resolução 3D: %.2f · PCSS: %s · SSAO: %s · luz assada: %s" % [
+		Engine.get_version_info().string, RenderingServer.get_current_rendering_method(), RenderingServer.get_video_adapter_name(),
+		_medidas().replace("\n", " · "), il.modo_sombra, _part, "sim" if il.fumaca_on else "não", acesas, il.fixas.size(),
+		"sim" if il.escuro else "não", "sim" if nevoa else "não", meta.hora, "antes" if il.antes else "some" if il.some else "direta",
+		get_viewport().scaling_3d_scale, pcss, ssao, lm_on]
 
 func _aplicar_opcao(chave: StringName, valor: Variant) -> void:
 	var il := iluminacao
@@ -774,13 +1016,21 @@ func _aplicar_opcao(chave: StringName, valor: Variant) -> void:
 		&"bonecos":  # sala-fechada.html:217
 			il.some = valor == "some"
 			il.antes = valor == "antes"
-		&"particulas":
-			il.particulas_on = valor
-			for b in il.brasas: b.visible = valor
-			if il.poeira: il.poeira.visible = valor
+		&"como_some": il.modo_some = ["abraca", "inteiro", "agora"].find(valor)
+		&"peso":
+			Unidade.peso = valor
+			Unidade.pk = Unidade.PESOS[valor]
+		&"part":
+			_part = valor
+			il.poe_particulas(valor)
+		&"particulas":  # testes antigos ainda usam liga e desliga
+			_part = "todas" if valor else "nao"
+			il.poe_particulas(_part)
 		&"fumaca":
 			il.fumaca_on = valor
 			if il.fumaca: il.fumaca.visible = valor
+		&"f-dens":
+			if il.fumaca: (il.fumaca.material_override as ShaderMaterial).set_shader_parameter("dens", float(valor))
 		&"lm":
 			lm_on = valor
 			_por_lm(valor)
@@ -789,12 +1039,34 @@ func _aplicar_opcao(chave: StringName, valor: Variant) -> void:
 			il.chamas_on = valor
 		&"claro":
 			var e := _env()
-			e.ambient_light_color = Color.WHITE if valor else _col(meta.ambiente.cor)
-			e.ambient_light_energy = 1.0 if valor else meta.ambiente.intensidade
+			e.ambient_light_color = Color.WHITE if valor else _col("#0a0b12")
+			e.ambient_light_energy = 1.0 if valor else (0.0 if il.escuro else 1.0)
 			e.fog_enabled = nevoa and not valor
 			efeitos.claro = valor
+		&"todas": _todas(valor)
+		&"acesas": _acaso(valor)
+		&"semente":
+			_semente = valor
+			var ob := menu.controle(&"acesas") as OptionButton
+			if ob.selected > 0: _acaso(["manual", "0", "25", "50", "75", "100"][ob.selected])
+		&"semente:botao":
+			var n := _semente
+			while n == _semente: n = randi_range(1, 9999)
+			menu.poe(&"semente", n)
+			_aplicar_opcao(&"semente", n)
+		&"escuro": _poe_escuro(valor == "1")
+		&"nevoa": _poe_nevoa(valor)
+		&"hora": _poe_hora(valor)
+		&"perfil": _perfil = valor
+		&"res": get_viewport().scaling_3d_scale = float(valor)
+		&"copiar":
+			DisplayServer.clipboard_set(_relatorio())
+			menu.aviso("Relatório copiado")
 		_:
-			if String(chave).begins_with("efeito"): efeitos.opcao(chave, valor)
+			if String(chave).begins_with("tocha-"):
+				il.fixas[int(String(chave).substr(6)) - 1].apagada = not valor
+				_pinta_tochas()
+			elif String(chave).begins_with("efeito"): efeitos.opcao(chave, valor)
 
 func _env() -> Environment:
 	for c in get_children():
@@ -803,7 +1075,7 @@ func _env() -> Environment:
 
 func _process(dt: float) -> void:
 	bonecos.az_camera = camera.az
-	if saida == "" or not pronto or _arg("andar") != "" or "--controle-real" in OS.get_cmdline_user_args():  # o teste do controle fecha sozinho
+	if saida == "" or not pronto or _arg("andar") != "" or "--controle-real" in OS.get_cmdline_user_args() or "--menu-tudo" in OS.get_cmdline_user_args():  # esses testes fecham sozinhos
 		return
 	t += dt
 	if rapido and t > 1.5:  # só o print (calibração de brilho)

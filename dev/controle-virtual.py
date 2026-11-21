@@ -26,10 +26,11 @@ def aperta(botao, nome):
 
 
 if "--menu" in sys.argv:
-    # Start abre; A abre a lista (1º item), baixo e A trocam o valor; baixo 2x e A marcam uma caixa
-    for b, n in [(B.XUSB_GAMEPAD_START, "Start"), (B.XUSB_GAMEPAD_A, "A (abre a lista)"), (B.XUSB_GAMEPAD_DPAD_DOWN, "baixo"),
-                 (B.XUSB_GAMEPAD_A, "A (escolhe)"), (B.XUSB_GAMEPAD_DPAD_DOWN, "baixo"), (B.XUSB_GAMEPAD_DPAD_DOWN, "baixo"),
-                 (B.XUSB_GAMEPAD_A, "A (marca)")]:
+    # Start abre (foco no grupo Cena); A abre o grupo; baixo e A marcam "Todas as tochas"; baixo e A abrem a lista do
+    # sorteio, baixo e A escolhem "0 %"
+    for b, n in [(B.XUSB_GAMEPAD_START, "Start"), (B.XUSB_GAMEPAD_A, "A (abre o grupo)"), (B.XUSB_GAMEPAD_DPAD_DOWN, "baixo"),
+                 (B.XUSB_GAMEPAD_A, "A (marca Todas)"), (B.XUSB_GAMEPAD_DPAD_DOWN, "baixo"), (B.XUSB_GAMEPAD_A, "A (abre a lista)"),
+                 (B.XUSB_GAMEPAD_DPAD_DOWN, "baixo"), (B.XUSB_GAMEPAD_A, "A (escolhe)")]:
         aperta(b, n)
     print("menu aberto: analógico segurado 1 s, X (o herói não pode andar nem golpear)", flush=True)
     g.left_joystick_float(0.0, 1.0); g.update(); time.sleep(1.0)

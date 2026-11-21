@@ -6,6 +6,9 @@ uniform sampler2D tex : source_color, filter_nearest;
 uniform float scissor = 0.5;
 uniform bool usa_cor_vertice = false;
 uniform bool some = true;
+uniform int modo_some = 0;  // 0 luz que abraça, 1 boneco inteiro (visto), 2 como estava (Lambert por face, Bayer 4x4)
+uniform float visto = 1.0;
+uniform vec3 amb_plano = vec3(0.0);  // ambiente x2 no "Como antes" (zero na escuridão total)
 uniform bool antes = false;  // "Como antes" da página: luz plana no corpo (ambiente x2 + tochas no peito x0,5), nunca some
 uniform vec3 cor_luz = vec3(1.0, 0.62, 0.3);
 uniform int n_fogos = 0;
@@ -18,6 +21,8 @@ uniform vec3 hemi_ceu = vec3(0.0);
 uniform vec3 hemi_chao = vec3(0.0);
 varying vec3 wpos;
 void vertex() { wpos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz; }
+float bayer2(vec2 a) { a = floor(a); return fract(a.x / 2.0 + a.y * a.y * 0.75); }
+float bayer4(vec2 a) { return bayer2(0.5 * a) * 0.25 + bayer2(a); }
 float fino(vec2 a) { return fract(52.9829189 * fract(dot(a, vec2(0.06711056, 0.00583715)))); }
 void fragment() {
 	vec4 t = texture(tex, UV);
@@ -26,24 +31,27 @@ void fragment() {
 	if (some && !IN_SHADOW_PASS) {
 		// mesma conta da página para decidir o que some (sem as sombras: a luz real, com sombra, vem do light())
 		vec3 n = normalize((INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
+		vec3 nf = normalize(cross(dFdx(wpos), dFdy(wpos)));  // normal da face (o "como estava" é facetado)
+		if (dot(nf, n) < 0.0) nf = -nf;
 		float s = 0.0;
 		for (int i = 0; i < n_fogos; i++) {
 			vec3 l = fogos[i].xyz - wpos;
 			float d = length(l), x = d / fogos_cor[i].a, j = clamp(1.0 - x * x, 0.0, 1.0);
 			vec3 c = fogos_cor[i].rgb;
-			s += fogos[i].w * j * j * 16.0 / (d * d + 16.0) * (0.2 + 0.4 * (dot(n, l / d) + 1.0)) * max(c.r, max(c.g, c.b));
+			s += fogos[i].w * j * j * 16.0 / (d * d + 16.0) * (modo_some == 0 ? 0.2 + 0.4 * (dot(n, l / d) + 1.0) : max(dot(nf, l / d), 0.0)) * max(c.r, max(c.g, c.b));
 		}
 		// ar livre (LUZ_FORA, planta-mundo.js:637): sol e céu também contam. shortcut: aqui sem a sombra do sol; trocar se boneco
 		// na sombra de uma árvore aparecer inteiro onde a página o apaga
 		s += fora.x * max(sol_cor.r, max(sol_cor.g, sol_cor.b)) * (0.2 + 0.4 * (dot(n, sol_dir) + 1.0));
 		vec3 hm = mix(hemi_chao, hemi_ceu, 0.5 * n.y + 0.5);
 		s += fora.y * max(hm.r, max(hm.g, hm.b));
-		if (smoothstep(0.0, 0.05, s) <= fino(FRAGCOORD.xy)) discard;
+		if (modo_some == 1) { if (visto <= fino(FRAGCOORD.xy)) discard; }
+		else if (smoothstep(0.0, 0.05, s) <= (modo_some == 2 ? bayer4(FRAGCOORD.xy) : fino(FRAGCOORD.xy))) discard;
 	}
 	if (antes && !IN_SHADOW_PASS) {  // sala-fechada.html:1650-1659
 		// shortcut: queda medida em cada pixel (não no peito) e sem cortar as 2 primeiras tochas pela sombra; trocar se
 		// o boneco ficar claro atrás de uma parede
-		vec3 lp = vec3(0.08, 0.09, 0.14);  // AMBIENTE x2 (sala-fechada.html:82)
+		vec3 lp = amb_plano;
 		for (int i = 0; i < n_fogos; i++) {
 			float q = max(0.0, 1.0 - length(fogos[i].xyz - wpos) / fogos_cor[i].a);
 			lp += fogos_cor[i].rgb * fogos[i].w * q * q * 0.5;
@@ -78,7 +86,7 @@ void light() {
 	float x = d / a, j = clamp(1.0 - x * x, 0.0, 1.0);
 	float q = pow(max(1.0 - pow(d / a, 4.0), 0.0), 2.0) * pow(max(d, 0.0001), -atenuacao_godot);
 	float sombra = q > 0.0001 ? clamp(ATTENUATION / q, 0.0, 1.0) : 0.0;
-	DIFFUSE_LIGHT += cor * w * j * j * 16.0 / (d * d + 16.0) * (0.2 + 0.4 * (dot(NORMAL, LIGHT) + 1.0)) * sombra;
+	DIFFUSE_LIGHT += cor * w * j * j * 16.0 / (d * d + 16.0) * (some && modo_some == 0 ? 0.2 + 0.4 * (dot(NORMAL, LIGHT) + 1.0) : max(dot(NORMAL, LIGHT), 0.0)) * sombra;  // só a "luz que abraça" usa meia Lambert
 }
 }
 }

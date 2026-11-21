@@ -18,6 +18,10 @@ var pcss := false
 var tremor_on := true
 var some := true
 var antes := false  # "Como antes": luz plana, o boneco nunca some
+var modo_some := 0  # como o boneco some: 0 luz que abraça, 1 boneco inteiro, 2 como estava (sala-fechada.html:218)
+var escuro := true  # escuridão total (padrão da página desde 18/11); false = penumbra azul
+var fixas: Array[Fonte] = []  # as tochas fixas na ordem da página (o menu numera assim)
+const AMBIENTE := Vector3(0.04, 0.045, 0.07)  # sala-fechada.html:82
 var fumaca_on := true
 var meta: Dictionary
 var bonecos: Bonecos
@@ -121,6 +125,7 @@ func _luzes() -> void:
 		fo.braseiro = f.braseiro
 		fo.apagada = f.apagada
 		tochas.append(fo)
+		fixas.append(fo)
 	tochas.sort_custom(func(a: Fonte, b: Fonte) -> bool: return a.luz.position.distance_squared_to(alvo) < b.luz.position.distance_squared_to(alvo))  # as 2 mais perto do herói projetam sombra (sala-fechada.html:1642-1643)
 	aplicar_sombras()
 	var s: Dictionary = meta.sol
@@ -359,6 +364,22 @@ func _process(dt: float) -> void:
 		m.set_shader_parameter("n_fogos", fs.size())
 		m.set_shader_parameter("some", some)
 		m.set_shader_parameter("antes", antes)
+		m.set_shader_parameter("modo_some", modo_some)
+		m.set_shader_parameter("amb_plano", Vector3.ZERO if escuro else AMBIENTE * 2.0)
+	if some and modo_some == 1 and bonecos:  # visto(u): a luz nos pés, no peito ou na cabeça mostra o boneco inteiro (sala-fechada.html:1137)
+		for u in bonecos.unidades:
+			var m := 0.0
+			for h in [0.1, 0.55, 0.95]:
+				var p := u.no.global_position + Vector3(0, u.alt * h, 0)
+				var k := 0.0
+				for i in fs.size():
+					var f: Vector4 = fs[i]
+					var d := p.distance_to(Vector3(f.x, f.y, f.z))
+					var j := maxf(0.0, 1.0 - pow(d / fc[i].w, 2.0))
+					k += f.w * maxf(fc[i].x, maxf(fc[i].y, fc[i].z)) * j * j * 16.0 / (d * d + 16.0)
+				m = maxf(m, k)
+			var x := minf(1.0, m / 0.05)
+			for mt in u.mats: mt.set_shader_parameter("visto", x * x * (3.0 - 2.0 * x))
 
 func aplicar_sombras() -> void:
 	# sala-fechada.html:692-699: só as 2 primeiras luzes projetam; dura = mapa 128 sem filtro, suave = 512 com PCF
@@ -440,7 +461,7 @@ func _particulas() -> void:
 func tinge() -> void:  # tinge() da página (sala-fechada.html:948): cada grão pega a cor das tochas acesas perto; chamar ao acender ou apagar
 	if poeira == null: return
 	for i in poeira0.size():
-		var k := 0.0
+		var k := 0.0 if escuro else 0.08
 		for c in tochas: if not c.apagada: k += c.forca * pow(maxf(0.0, 1.0 - poeira0[i].distance_to(c.luz.position) / 10.0), 2.0)
 		k = minf(1.2, k)
 		poeira.multimesh.set_instance_color(i, Color(k * 0.9, k * 0.75, k * 0.6))
@@ -480,3 +501,14 @@ func _fumaca() -> void:  # parâmetros lidos da página em 20/11 (export/fumaca.
 	fumaca.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	fumaca.visible = fumaca_on
 	add_child(fumaca)
+
+const PARTICULAS := {"todas": [1.0, 1.0], "poucas": [0.5, 0.5], "brasas": [0.0, 1.0], "poeira": [1.0, 0.0], "nao": [0.0, 0.0]}
+func poe_particulas(m: String) -> void:  # sala-fechada.html:937: poeira e faíscas, metade de cada, uma das duas ou nenhuma
+	var pb: Array = PARTICULAS.get(m, PARTICULAS.todas)
+	particulas_on = pb[1] > 0.0
+	for b in brasas:
+		b.amount = maxi(1, roundi(10 * pb[1]))
+		b.visible = particulas_on
+	if poeira:
+		poeira.visible = pb[0] > 0.0
+		poeira.multimesh.visible_instance_count = roundi(poeira0.size() * pb[0])
