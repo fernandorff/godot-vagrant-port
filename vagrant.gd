@@ -201,6 +201,30 @@ func _testes() -> bool:
 		var aneis := rio.aneis.slots.filter(func(a: Vector4) -> bool: return a.z > 0.0).size()
 		print("RIO andou %.2f, lento %.2f, molhado %s, y %.3f, anéis %d, gotas %d" % [(u.no.position - p0).length(), u.lento, Grade.molha(u.no.position), u.no.position.y, aneis, rio.vivas])
 		_print_png(png)
+	elif "--toque-teste" in args:  # dedo arrastado na metade esquerda anda; toque no A pula; dedo na direita gira a câmera
+		var tela := get_viewport().get_visible_rect().size
+		var toque := func(i: int, p: Vector2, apertado: bool) -> void:
+			var e := InputEventScreenTouch.new(); e.index = i; e.position = p; e.pressed = apertado; Input.parse_input_event(e)
+		var arrasta := func(i: int, p: Vector2) -> void:
+			var e := InputEventScreenDrag.new(); e.index = i; e.position = p; Input.parse_input_event(e)
+		var p0 := u.no.position
+		toque.call(0, Vector2(200, 500), true)
+		arrasta.call(0, Vector2(200, 400))
+		await get_tree().create_timer(1.5).timeout
+		toque.call(0, Vector2(200, 400), false)
+		var andou := (u.no.position - p0).length()
+		await get_tree().create_timer(0.8).timeout
+		var az0 := camera.az
+		toque.call(1, Vector2(700, 300), true)
+		arrasta.call(1, Vector2(790, 300))
+		await get_tree().create_timer(0.8).timeout
+		toque.call(1, Vector2(790, 300), false)
+		var a_pos := tela + Vector2(-110, -110)
+		toque.call(2, a_pos, true)
+		await get_tree().create_timer(0.15).timeout
+		var pulou := u.pulando
+		toque.call(2, a_pos, false)
+		print("TOQUE andou %.2f, câmera girou %.2f rad, pulou %s" % [andou, camera.az - az0, pulou])
 	elif "--mistura" in args:  # formato da mistura entre 2 poses paradas do pulo (0,5 s): fração do caminho em 20/50/80% do tempo
 		var an0 := u.player.get_animation(u.player.current_animation)
 		var sk := u.player.get_node(u.player.root_node).get_node(NodePath(an0.track_get_path(0).get_concatenated_names())) as Skeleton3D
@@ -694,6 +718,7 @@ func _por_lm(on: bool) -> void:
 func _menu() -> void:  # F1 abre e fecha; cada opção troca na hora, sem reiniciar
 	menu = MenuOpcoes.new()
 	add_child(menu)
+	if DisplayServer.is_touchscreen_available() or "--toque" in OS.get_cmdline_user_args(): add_child(Toque.new())  # celular: joysticks na tela
 	menu.titulo("Sombras das tochas")
 	menu.escolha(&"sombras", {"nao": "Sem sombra", "dura": "Dura (128 px, sem filtro)", "suave": "Suave (512 px, filtrada)"}, modo_sombra)
 	menu.caixa(&"pcss", "Penumbra (PCSS)", pcss)
