@@ -280,6 +280,12 @@ func anda_rota(correndo: bool, dt: float) -> void:
 		no.position.z += dz
 		c = casa
 		rota.pop_front()
+		if not rota.is_empty():  # a sobra do passo segue para a próxima casa (sem ela, a velocidade caía a cada troca: tranco medido 21/11)
+			var prox := Vector2(rota[0].x * grade.CEL + 1.0 - no.position.x, rota[0].y * grade.CEL + 1.0 - no.position.z)
+			var resto := minf(passo - l, prox.length())
+			if prox.length() > 0.0001:
+				no.position.x += prox.x / prox.length() * resto
+				no.position.z += prox.y / prox.length() * resto
 		if rota.is_empty():
 			v = 0.0
 			v1 = 0.0

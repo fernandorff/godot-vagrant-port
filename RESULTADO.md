@@ -213,3 +213,9 @@ Origem: **[medido]** = rodado nesta noite; **[dedução]** = não provado.
 - Medido com o RustDesk ligado: a placa já estava em ~16% antes de cada rodada, então as duas medições ficam fora do método (trava de placa ≤ 5%) **[medido]**.
 - O Godot fica ~13% abaixo na média, mas com o 1% low um pouco melhor (quedas menores) **[medido]**.
 - Repetir com o RustDesk desconectado para o número final.
+
+## Animações e tranco ao trocar de casa (21/11)
+
+- As animações não tocavam: o AnimationPlayer do próprio `.glb`, parado e ativo, regravava a pose inicial em todos os ossos a cada quadro, por cima do player de cada boneco **[medido: a pose do osso u0_b1 ficava fixa enquanto o clipe avançava]**. Agora ele é desligado depois de entregar a biblioteca de clipes; a pose segue o clipe **[medido]**.
+  - De quebra, o quadro mediano andando caiu de 7,5 ms para 3,3 ms **[medido]**.
+- Tranco ao trocar de casa: não era cálculo (nenhum quadro lento perto da troca), era o movimento. Ao chegar ao centro da casa, o herói perdia o resto do passo daquele quadro. Agora a sobra segue para a próxima casa: quedas de velocidade perto da troca de 36 para 0, chegada igual (42,8 s) **[medido, `--andar=30,20 --tranco`]**.
