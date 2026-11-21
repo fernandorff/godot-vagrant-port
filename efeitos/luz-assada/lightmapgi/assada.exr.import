@@ -4,15 +4,16 @@ importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://ban61xpg60vdl"
 path.bptc="res://.godot/imported/assada.exr-87c164b89ed315b8108c30cc9e7f73d1.bptc.ctexarray"
+path.astc="res://.godot/imported/assada.exr-87c164b89ed315b8108c30cc9e7f73d1.astc.ctexarray"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://efeitos/luz-assada/lightmapgi/assada.exr"
-dest_files=["res://.godot/imported/assada.exr-87c164b89ed315b8108c30cc9e7f73d1.bptc.ctexarray"]
+dest_files=["res://.godot/imported/assada.exr-87c164b89ed315b8108c30cc9e7f73d1.bptc.ctexarray", "res://.godot/imported/assada.exr-87c164b89ed315b8108c30cc9e7f73d1.astc.ctexarray"]
 
 [params]
 

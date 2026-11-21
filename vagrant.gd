@@ -225,13 +225,31 @@ func _testes() -> bool:
 		var pulou := u.pulando
 		toque.call(2, a_pos, false)
 		print("TOQUE andou %.2f, câmera girou %.2f rad, pulou %s" % [andou, camera.az - az0, pulou])
+	elif "--menu-toque" in args:  # celular: toque no ☰ abre o menu, toque numa caixa muda a opção, toque em Fechar fecha
+		menu.opcao_mudou.connect(func(k: StringName, v: Variant) -> void: print("  menu: %s = %s" % [k, v]))
+		var toca_em := func(p: Vector2) -> void:
+			for apertado: bool in [true, false]:
+				var e := InputEventScreenTouch.new(); e.index = 0; e.position = p; e.pressed = apertado; Input.parse_input_event(e)
+				await get_tree().create_timer(0.1).timeout
+		var tq: Toque = get_children().filter(func(c: Node) -> bool: return c is Toque)[0]
+		var menu_bt: Control = tq._bases.filter(func(par: Array) -> bool: return par[1][0] == "Menu")[0][0]
+		await toca_em.call(menu_bt.get_global_rect().get_center())
+		await get_tree().create_timer(0.3).timeout
+		var caixa: CheckBox = menu._lista.get_children().filter(func(c: Node) -> bool: return c is CheckBox)[0]
+		print("MENU-TOQUE aberto %s, caixa '%s' em %s" % [MenuOpcoes.aberto, caixa.text, caixa.get_global_rect()])
+		await toca_em.call(caixa.get_global_rect().get_center())
+		await get_tree().create_timer(0.3).timeout
+		await toca_em.call(menu._fechar.get_global_rect().get_center())
+		await get_tree().create_timer(0.3).timeout
+		print("MENU-TOQUE caixa marcada %s, menu aberto no fim %s, botões de toque visíveis %s" % [caixa.button_pressed, MenuOpcoes.aberto, menu_bt.visible])
+		_print_png(png)
 	elif "--mistura" in args:  # formato da mistura entre 2 poses paradas do pulo (0,5 s): fração do caminho em 20/50/80% do tempo
-		var an0 := u.player.get_animation(u.player.current_animation)
+		var an0 := u.player.get_animation(u.clipe_atual())
 		var sk := u.player.get_node(u.player.root_node).get_node(NodePath(an0.track_get_path(0).get_concatenated_names())) as Skeleton3D
 		var fases: Dictionary = u.poses["parado"]
 		set_process(false)
 		bonecos.set_process(false)
-		u.player.play(fases["agacha"], 0.0)
+		u.mistura(fases["agacha"], 0.0)
 		for i in 10: await get_tree().process_frame
 		var osso := 1
 		var qa := sk.get_bone_pose_rotation(osso)
@@ -250,7 +268,7 @@ func _testes() -> bool:
 		print("MISTURA (ângulo total %.3f rad) %s" % [total, linha])
 	elif "--gestos-todos" in args:  # cada boneco toca cada gesto 0,6 s; conta as poses distintas do 2º osso do seu esqueleto
 		for b: Unidade in bonecos.unidades:
-			var an0 := b.player.get_animation(b.player.current_animation)
+			var an0 := b.player.get_animation(b.clipe_atual())
 			var sk := b.player.get_node(b.player.root_node).get_node(NodePath(an0.track_get_path(0).get_concatenated_names())) as Skeleton3D
 			var linha: Array = []
 			for g: String in b.gestos:
@@ -269,7 +287,7 @@ func _testes() -> bool:
 		var az0 := camera.az
 		if _arg("sinal") != "": FileAccess.open(_arg("sinal"), FileAccess.WRITE).store_string("ouvindo")  # o stdout sai em blocos: o script do controle espera este arquivo
 		var fim := Time.get_ticks_msec() + 30000
-		var an0 := u.player.get_animation(u.player.current_animation)  # o esqueleto que o player anima (o da trilha)
+		var an0 := u.player.get_animation(u.clipe_atual())  # o esqueleto que o player anima (o da trilha)
 		var esq := u.player.get_node(u.player.root_node).get_node(NodePath(an0.track_get_path(0).get_concatenated_names())) as Skeleton3D
 		var poses_por_gesto := {}  # gesto (ou fase do pulo) -> rotações distintas de um osso: >1 = o esqueleto mexe
 		var gestos_no_menu := {}  # o que o herói fez com o menu aberto (deve ficar vazio)
@@ -360,7 +378,7 @@ func _testes() -> bool:
 		while u.pulando or u.pouso > 0.0:
 			await get_tree().process_frame
 			topo = maxf(topo, u.no.position.y - y0)
-			var ca := String(u.player.current_animation)
+			var ca := String(u.clipe_atual())
 			if fases.is_empty() or fases[-1] != ca: fases.append(ca)
 		print("PULO altura %.3f, %.3f s até o fim do pouso, fases %s, gesto %s" % [topo, (Time.get_ticks_msec() - t0) / 1000.0, fases, u.atual])
 	elif _arg("andar") != "":  # --andar=cx,cz: anda até a casa; tempo e posição ao chegar
@@ -718,7 +736,9 @@ func _por_lm(on: bool) -> void:
 func _menu() -> void:  # F1 abre e fecha; cada opção troca na hora, sem reiniciar
 	menu = MenuOpcoes.new()
 	add_child(menu)
-	if DisplayServer.is_touchscreen_available() or "--toque" in OS.get_cmdline_user_args(): add_child(Toque.new())  # celular: joysticks na tela
+	if DisplayServer.is_touchscreen_available() or "--toque" in OS.get_cmdline_user_args():  # celular: joysticks na tela e menu grande
+		add_child(Toque.new())
+		menu.modo_toque()
 	menu.titulo("Sombras das tochas")
 	menu.escolha(&"sombras", {"nao": "Sem sombra", "dura": "Dura (128 px, sem filtro)", "suave": "Suave (512 px, filtrada)"}, modo_sombra)
 	menu.caixa(&"pcss", "Penumbra (PCSS)", pcss)

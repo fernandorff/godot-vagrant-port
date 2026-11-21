@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0mnnu02dnrno"
 path.s3tc="res://.godot/imported/sala-uv2_4.png-296056076ea3e693dab36da10ebe36a7.s3tc.ctex"
+path.etc2="res://.godot/imported/sala-uv2_4.png-296056076ea3e693dab36da10ebe36a7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://efeitos/luz-assada/lightmapgi/sala-uv2_4.png"
-dest_files=["res://.godot/imported/sala-uv2_4.png-296056076ea3e693dab36da10ebe36a7.s3tc.ctex"]
+dest_files=["res://.godot/imported/sala-uv2_4.png-296056076ea3e693dab36da10ebe36a7.s3tc.ctex", "res://.godot/imported/sala-uv2_4.png-296056076ea3e693dab36da10ebe36a7.etc2.ctex"]
 
 [params]
 

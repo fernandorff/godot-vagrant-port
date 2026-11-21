@@ -30,6 +30,40 @@ static func so_do_boneco(an: Animation, nome: String) -> void:
 	for i in range(an.get_track_count() - 1, -1, -1):
 		if not an.track_get_path(i).get_concatenated_subnames().begins_with(prefixo): an.remove_track(i)
 
+static func curva_s() -> Curve:  # a mistura do crossFade do Three: começa e termina devagar (inclinação zero nas pontas)
+	var c := Curve.new()
+	c.add_point(Vector2(0, 0), 0.0, 0.0)
+	c.add_point(Vector2(1, 1), 0.0, 0.0)
+	return c
+
+# Uma AnimationTree por boneco: uma Transição com uma entrada por clipe (a mistura em curva S) e o ritmo (TimeScale).
+# O AnimationPlayer só guarda os clipes.
+func _arvore(p: AnimationPlayer, l: AnimationLibrary, raiz: Node, raiz_anim: Node) -> AnimationTree:
+	var bt := AnimationNodeBlendTree.new()
+	var tr := AnimationNodeTransition.new()
+	tr.xfade_curve = curva_s()
+	tr.allow_transition_to_self = true
+	bt.add_node(&"troca", tr)
+	var i := 0
+	for nome: StringName in l.get_animation_list():
+		var na := AnimationNodeAnimation.new()
+		na.animation = nome
+		bt.add_node(nome, na)
+		tr.add_input(nome)
+		bt.connect_node(&"troca", i, nome)
+		i += 1
+	bt.add_node(&"ritmo", AnimationNodeTimeScale.new())
+	bt.connect_node(&"ritmo", 0, &"troca")
+	bt.connect_node(&"output", 0, &"ritmo")
+	var arv := AnimationTree.new()
+	raiz.add_child(arv)
+	arv.tree_root = bt
+	arv.anim_player = arv.get_path_to(p)
+	arv.root_node = arv.get_path_to(raiz_anim)
+	p.active = false
+	arv.active = true
+	return arv
+
 func montar(raiz: Node, lib: AnimationLibrary, raiz_anim: Node, defs: Array, g: Grade) -> void:
 	grade = g
 	for d: Dictionary in defs:
@@ -55,7 +89,8 @@ func montar(raiz: Node, lib: AnimationLibrary, raiz_anim: Node, defs: Array, g: 
 		raiz.add_child(p)
 		p.root_node = p.get_path_to(raiz_anim)
 		p.add_animation_library("", l)
-		unidades.append(Unidade.new(d, raiz.find_child(d.no, true, false) as Node3D, p, grade))
+		var arv := _arvore(p, l, raiz, raiz_anim)
+		unidades.append(Unidade.new(d, raiz.find_child(d.no, true, false) as Node3D, p, arv, grade))
 	sel = unidades[0]
 
 func _process(dt: float) -> void:  # sala-fechada.html:1678-1692: rotas, depois conduz() (pulo, teclado, quem anda sem rota)

@@ -8,7 +8,7 @@ const RAIO := 90.0  # px: quanto o dedo afasta para o analógico chegar a 1
 const BOTOES := [  # [texto, botão ou eixo, posição a partir do canto inferior direito]
 	["A", JOY_BUTTON_A, Vector2(-110, -110)], ["X", JOY_BUTTON_X, Vector2(-220, -150)], ["B", JOY_BUTTON_B, Vector2(-110, -230)],
 	["Y", JOY_BUTTON_Y, Vector2(-220, -270)], ["LB", JOY_BUTTON_LEFT_SHOULDER, Vector2(-330, -330)],
-	["RB", JOY_BUTTON_RIGHT_SHOULDER, Vector2(-110, -350)], ["Corre", -1, Vector2(-330, -200)], ["☰", JOY_BUTTON_START, Vector2(-80, -500)], ["⛶", -2, Vector2(-200, 0)],
+	["RB", JOY_BUTTON_RIGHT_SHOULDER, Vector2(-110, -350)], ["Corre", -1, Vector2(-330, -200)], ["Menu", JOY_BUTTON_START, Vector2(-80, -500)], ["Tela", -2, Vector2(-200, 0)],
 ]
 
 var _dedos := {}  # índice do toque -> "esq", "dir" ou o botão
@@ -22,7 +22,7 @@ func _ready() -> void:
 		c.text = b[0]
 		c.focus_mode = Control.FOCUS_NONE
 		c.mouse_filter = Control.MOUSE_FILTER_IGNORE  # o toque é tratado em _input
-		c.add_theme_font_size_override("font_size", 26)
+		c.add_theme_font_size_override("font_size", 22)
 		c.size = Vector2(84, 84)
 		c.modulate.a = 0.55
 		add_child(c)
@@ -42,6 +42,10 @@ func _botao_em(p: Vector2) -> Array:
 	return []
 
 func _input(ev: InputEvent) -> void:
+	if MenuOpcoes.aberto:  # menu aberto: o toque é do menu (o Godot transforma o toque em clique nas opções)
+		for par: Array in _bases: (par[0] as Control).visible = false
+		return
+	for par: Array in _bases: (par[0] as Control).visible = true
 	if ev is InputEventMouse and ev.device == InputEvent.DEVICE_ID_EMULATION:  # o clique que o Godot gera do toque escolhia boneco por baixo do joystick
 		get_viewport().set_input_as_handled()
 		return

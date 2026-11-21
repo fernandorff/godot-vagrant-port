@@ -37,7 +37,8 @@ const VOO_TOPO := 9.0            # "topo" enquanto |v| <= 9
 var pulo0 := sqrt(2.0 * GRAV * SALTO)
 var nome: String
 var no: Node3D
-var player: AnimationPlayer
+var player: AnimationPlayer   # só guarda os clipes
+var arvore: AnimationTree      # toca: Transição em curva S + ritmo
 var grade: Grade
 var alt: float
 var c: Vector2i                  # casa onde está
@@ -65,17 +66,18 @@ var fora := Vector2.ZERO        # foraU da página: sol e céu que chegam (suavi
 var mats: Array[ShaderMaterial] = []  # os materiais do corpo, para o fora
 var lento := 1.0                 # lentidao() da página: 0,65 com o pé no rio
 
-func _init(d: Dictionary, n: Node3D, p: AnimationPlayer, g: Grade) -> void:
+func _init(d: Dictionary, n: Node3D, p: AnimationPlayer, a: AnimationTree, g: Grade) -> void:
 	nome = d.nome
 	no = n
 	player = p
+	arvore = a
 	grade = g
 	alt = float(d.alt)
 	c = Vector2i(int(d.cx), int(d.cz))
 	gestos = d.gestos
 	poses = d.poses
 	mao = d.mao
-	player.animation_finished.connect(func(_n: StringName) -> void: _proximo())
+	arvore.animation_finished.connect(func(n: StringName) -> void: if n == clipe_atual(): _proximo())
 	toca("parado")
 
 # ---- gestos ----
@@ -105,10 +107,16 @@ func _proximo(dur := ENCADEIA) -> void:
 		fila = gestos[atual].duplicate()
 	mistura(fila.pop_front(), dur)
 
-func mistura(clipe: String, dur: float) -> void:  # toca o clipe misturando a partir da pose atual
-	# shortcut: mistura linear (o Three faz curva S). O play_with_capture com TRANS_SINE pula direto para a pose final em
-	# trilhas de esqueleto (medido 21/11, --mistura); a curva S de verdade pede AnimationTree com xfade_curve.
-	player.play(clipe, dur)
+func mistura(clipe: String, dur: float) -> void:  # toca o clipe misturando a partir da pose atual, em curva S
+	(arvore.tree_root.get_node(&"troca") as AnimationNodeTransition).xfade_time = dur
+	arvore.set(&"parameters/troca/transition_request", clipe)
+
+func clipe_atual() -> String:  # o pedido ainda não processado vale (a Transição só troca no próximo quadro)
+	var pedido: String = arvore.get(&"parameters/troca/transition_request")
+	return pedido if pedido != "" else arvore.get(&"parameters/troca/current_state")
+
+func ritmo(r: float) -> void:  # o speed_scale do player antigo
+	arvore.set(&"parameters/ritmo/scale", r)
 
 func gesto() -> String:
 	if dirigido: return "correr" if corre_vs else "andar"
@@ -153,11 +161,11 @@ func no_ar() -> bool:
 	return pulando and not (pulo_agacha > 0.0)
 
 func _poe_fase(fases: Dictionary, fase: String) -> void:
-	if player.current_animation != fases[fase]: mistura(fases[fase], MISTURA[fase] * QUADRO)
+	if clipe_atual() != fases[fase]: mistura(fases[fase], MISTURA[fase] * QUADRO)
 
 func _volta() -> void:
 	atual = ""
-	player.speed_scale = 1.0
+	ritmo(1.0)
 	toca(gesto(), "pose")
 
 func pula(correndo: bool) -> void:
@@ -235,7 +243,7 @@ func rola(dt: float) -> void:  # o passo vai para onde ele olha; curva fechada c
 	var d := vira(rumo, dt) if dirigido else 0.0
 	embala(alvo * (1.0 - pk.freio * (1.0 - maxf(0.0, cos(d)))) * (pk.recupera if pouso > 0.0 else 1.0) if dirigido else 0.0, dt)
 	if dirigido and livre_de_pose() and atual in LACO:
-		player.speed_scale = (1.6 if corre and not corre_vs else 1.0) * lento * minf(1.0, maxf(0.5, v / (VEL * (CORRIDA if corre else 1.0) * lento)))  # ritmo() da página
+		ritmo((1.6 if corre and not corre_vs else 1.0) * lento * minf(1.0, maxf(0.5, v / (VEL * (CORRIDA if corre else 1.0) * lento))))  # ritmo() da página
 	if v == 0.0: return
 	var passo := v * dt
 	var mx := sin(no.rotation.y)
@@ -278,7 +286,7 @@ func anda_rota(correndo: bool, dt: float) -> void:
 	if livre_de_pose() and (atual == "andar" or atual == "correr"):
 		var tem_corrida := gestos.has("correr")
 		toca("correr" if correndo and tem_corrida else "andar")
-		player.speed_scale = (1.6 if correndo and not tem_corrida else 1.0) * lento * minf(1.0, maxf(0.5, v / topo))
+		ritmo((1.6 if correndo and not tem_corrida else 1.0) * lento * minf(1.0, maxf(0.5, v / topo)))
 	var passo := v * dt
 	if l <= passo:
 		no.position.x += dx
@@ -294,7 +302,7 @@ func anda_rota(correndo: bool, dt: float) -> void:
 		if rota.is_empty():
 			v = 0.0
 			v1 = 0.0
-			player.speed_scale = 1.0
+			ritmo(1.0)
 			if atual in LACO and livre_de_pose(): toca("parado")
 	else:
 		no.position.x += dx / l * passo
