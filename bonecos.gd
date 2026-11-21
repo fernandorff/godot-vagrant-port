@@ -72,7 +72,7 @@ func _process(dt: float) -> void:  # sala-fechada.html:1678-1692: rotas, depois 
 
 func eixo_pad(e: JoyAxis) -> float:
 	var v: float = eixos.get(e, 0.0)
-	return 0.0 if absf(v) < ZONA else v
+	return 0.0 if absf(v) < ZONA or MenuOpcoes.aberto else v
 
 func _unhandled_input(ev: InputEvent) -> void:
 	_controle(ev)
@@ -99,8 +99,8 @@ func _controle(ev: InputEvent) -> void:
 		var m := ev as InputEventJoypadMotion
 		var antes: float = eixos.get(m.axis, 0.0)
 		eixos[m.axis] = m.axis_value
-		if m.axis == JOY_AXIS_TRIGGER_LEFT and m.axis_value > 0.5 and antes <= 0.5 and sel: conjura(sel, "raio")
-	elif ev is InputEventJoypadButton and ev.pressed and sel:
+		if m.axis == JOY_AXIS_TRIGGER_LEFT and m.axis_value > 0.5 and antes <= 0.5 and sel and not MenuOpcoes.aberto: conjura(sel, "raio")
+	elif ev is InputEventJoypadButton and ev.pressed and sel and not MenuOpcoes.aberto:
 		match (ev as InputEventJoypadButton).button_index:
 			JOY_BUTTON_A: sel.pula(eixo_pad(JOY_AXIS_TRIGGER_RIGHT) > 0.5)
 			JOY_BUTTON_X: ataca(sel)

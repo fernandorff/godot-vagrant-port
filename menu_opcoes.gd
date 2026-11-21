@@ -5,6 +5,8 @@ extends CanvasLayer
 
 signal opcao_mudou(chave: StringName, valor: Variant)
 
+static var aberto := false  # com o menu aberto, bonecos e câmera ignoram o controle (o controle navega no menu)
+
 var _painel: PanelContainer
 var _lista: VBoxContainer
 var _fps: Label
@@ -43,14 +45,23 @@ func _process(dt: float) -> void:
 	_aviso_t -= dt
 	_aviso.visible = _aviso_t > 0.0
 
+func _input(ev: InputEvent) -> void:  # B fecha o menu antes do jogo ver o botão (senão solta fogo)
+	if aberto and ev is InputEventJoypadButton and ev.pressed and (ev as InputEventJoypadButton).button_index == JOY_BUTTON_B:
+		_alterna()
+		get_viewport().set_input_as_handled()
+
 func _unhandled_input(ev: InputEvent) -> void:
 	var start: bool = ev is InputEventJoypadButton and ev.pressed and (ev as InputEventJoypadButton).button_index == JOY_BUTTON_START
 	if start or ev is InputEventKey and ev.pressed and not ev.echo and (ev as InputEventKey).keycode == KEY_F1:
-		_painel.visible = not _painel.visible
-		# foco no primeiro item: o direcional e o A (ui_up/ui_down/ui_accept padrão do Godot) navegam pelo controle
-		var primeiro := _lista.get_children().filter(func(c: Node) -> bool: return c is BaseButton)
-		if _painel.visible and not primeiro.is_empty(): (primeiro[0] as Control).grab_focus()
-		elif not _painel.visible: get_viewport().gui_release_focus()
+		_alterna()
+
+func _alterna() -> void:
+	_painel.visible = not _painel.visible
+	aberto = _painel.visible
+	# foco no primeiro item: o direcional e o A (ui_up/ui_down/ui_accept) navegam pelo controle
+	var primeiro := _lista.get_children().filter(func(c: Node) -> bool: return c is BaseButton)
+	if aberto and not primeiro.is_empty(): (primeiro[0] as Control).grab_focus()
+	elif not aberto: get_viewport().gui_release_focus()
 
 func aviso(texto: String) -> void:  # recado curto no rodapé por 2 s (o aviso.mostrar da página)
 	_aviso.text = texto

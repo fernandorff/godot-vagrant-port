@@ -83,9 +83,10 @@ func salta() -> void:  # vai direto ao alvo, sem o lerp (atravessou a porta)
 func _process(dt: float) -> void:
 	if fixa: return
 	# controle (sala-fechada.html:1462): analógico direito gira e inclina, direcional cima e baixo aproxima e afasta
-	az -= (_rs.x if absf(_rs.x) >= Bonecos.ZONA else 0.0) * 2.2 * dt
-	polar = clampf(polar - (_rs.y if absf(_rs.y) >= Bonecos.ZONA else 0.0) * 1.4 * dt, POLAR_MIN, POLAR_MAX)
-	dist = clampf(dist * (1.0 + _zoom * 1.5 * dt), DIST_MIN, DIST_MAX)
+	if not MenuOpcoes.aberto:  # com o menu aberto o direcional navega no menu
+		az -= (_rs.x if absf(_rs.x) >= Bonecos.ZONA else 0.0) * 2.2 * dt
+		polar = clampf(polar - (_rs.y if absf(_rs.y) >= Bonecos.ZONA else 0.0) * 1.4 * dt, POLAR_MIN, POLAR_MAX)
+		dist = clampf(dist * (1.0 + _zoom * 1.5 * dt), DIST_MIN, DIST_MAX)
 	_alvo = _alvo.lerp(alvo(), minf(1.0, dt * SEGUE))
 	poe()
 	_some_paredes(dt)

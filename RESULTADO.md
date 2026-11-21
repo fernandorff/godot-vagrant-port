@@ -181,7 +181,9 @@ Origem: **[medido]** = rodado nesta noite; **[dedução]** = não provado.
   - Menu pelo controle (`python dev/controle-virtual.py --menu --sinal=<arq>`): Start abre e foca o primeiro item, o direcional desce e o A marca e desmarca (`ssao = true`, depois `false`) **[medido]**.
     - O `ui_accept` padrão do Godot não tem o botão A (só Enter e Espaço) **[medido]**; o menu o acrescenta no `_ready`.
     - O teste agora ignora a medição do `--saida`, cria um arquivo-sinal ao começar (a saída do Godot só chega ao arquivo aos blocos) e termina com o Back.
-    - Não verificado: com o menu aberto, o A provavelmente também faz o herói pular **[dedução]**.
+    - Com o menu aberto, o jogo ignora o controle (`MenuOpcoes.aberto`): analógico segurado 1 s, A e X → o herói andou 0,00, sem gesto **[medido]**. Com o menu aberto, o analógico também navega no menu (o `ui_up` padrão inclui o eixo).
+    - A lista (primeiro item) abre com o A; o direcional e o A escolhem (`sombras = nao`) **[medido]**.
+    - O B fecha o menu e não chega ao jogo (sem fogo); o menu terminou fechado **[medido]**.
 - **Rio (etapa 8)** (`rio.gd` + `rio.gdshader`): o shader do rio da página (cópia do módulo `agua/nativo`, com saída bruta).
   - Anéis nos pés dos 8 bonecos ao vivo; passo a 0,65 dentro d'água; o disco de sombra some na água.
   - `--rio`, 2 s com S dentro do rio: Godot 2,63 contra 2,65 na página **[medido]**; cor média da água igual (31,5/26,6/24,3 contra 33,4/27,5/25,4).
