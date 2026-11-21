@@ -1,0 +1,179 @@
+[
+ {
+  "caso": 1,
+  "drawCalls": 184,
+  "drawSombra": 133,
+  "drawVisivel": 49,
+  "fps1pctLow": 200,
+  "fpsMedio": 268.62,
+  "fpsPorSegundo": [
+   293,
+   290,
+   281,
+   275,
+   280,
+   235,
+   248,
+   256,
+   252,
+   277
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    53,
+    1440
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 3.72,
+  "msP99": 5,
+  "nosFaltando": 0,
+  "primSombra": 128087,
+  "primVisivel": 20963,
+  "primitivasPorQuadro": 149080,
+  "quadros": 2687,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "variante": "base",
+  "rodada": 1,
+  "gpuAntes": [
+   16,
+   17,
+   17,
+   16,
+   16
+  ],
+  "foraDoMetodo": true,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "drawCalls": 184,
+  "drawSombra": 133,
+  "drawVisivel": 49,
+  "fps1pctLow": 204.25,
+  "fpsMedio": 273.95,
+  "fpsPorSegundo": [
+   279,
+   256,
+   269,
+   283,
+   271,
+   285,
+   267,
+   237,
+   297,
+   296
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    53,
+    1440
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 3.65,
+  "msP99": 4.9,
+  "nosFaltando": 0,
+  "primSombra": 127967,
+  "primVisivel": 20963,
+  "primitivasPorQuadro": 148960,
+  "quadros": 2740,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "variante": "base",
+  "rodada": 2,
+  "gpuAntes": [
+   17,
+   16,
+   17,
+   16,
+   17
+  ],
+  "foraDoMetodo": true,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "drawCalls": 185,
+  "drawSombra": 133,
+  "drawVisivel": 50,
+  "fps1pctLow": 214.22,
+  "fpsMedio": 286.21,
+  "fpsPorSegundo": [
+   286,
+   269,
+   274,
+   293,
+   292,
+   272,
+   293,
+   283,
+   309,
+   292
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    53,
+    1440
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 3.49,
+  "msP99": 4.67,
+  "nosFaltando": 0,
+  "primSombra": 128087,
+  "primVisivel": 20963,
+  "primitivasPorQuadro": 149080,
+  "quadros": 2863,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "variante": "base",
+  "rodada": 3,
+  "gpuAntes": [
+   17,
+   18,
+   19,
+   17,
+   16
+  ],
+  "foraDoMetodo": true,
+  "errosNoLog": []
+ }
+]

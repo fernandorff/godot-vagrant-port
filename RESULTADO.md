@@ -194,3 +194,14 @@ Origem: **[medido]** = rodado nesta noite; **[dedução]** = não provado.
   - As chamadas de sombra vão de 189 para 351: a sombra de ponto da tocha desenha 6 faces, cheias de bonecos perto **[medido]**.
   - Os 55 fps não se repetiram na medição. Provável origem: o rótulo de fps nos prints, que mostra os primeiros segundos (prints com "1 fps" e "85 fps") **[dedução]**.
 - `vagrant.gd`: nós próprios para Luzes, Portas, Rio e Efeitos; testes `--porta`, `--fixa`, `--peso=`, `--controle`, `--rio`, `--efeitos-teste` e `--leva=1`.
+
+## fps Three x Godot (21/11, mesma vista padrão, 1280x720, vsync desligado, 3 rodadas de 10 s, mediana)
+
+| Motor | Rodadas | Mediana | 1% low (mediana) |
+|---|---|---|---|
+| Página (Chrome, three r117) | 313,5 · 314,4 · 325,1 | **314,4 fps** | 194,9 |
+| Godot 4.7.2 (Forward+) | 268,6 · 274,0 · 286,2 | **274,0 fps** | 204,3 |
+
+- Medido com o RustDesk ligado: a placa já estava em ~16% antes de cada rodada, então as duas medições ficam fora do método (trava de placa ≤ 5%) **[medido]**.
+- O Godot fica ~13% abaixo na média, mas com o 1% low um pouco melhor (quedas menores) **[medido]**.
+- Repetir com o RustDesk desconectado para o número final.
