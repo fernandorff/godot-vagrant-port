@@ -1,0 +1,39 @@
+@tool
+extends EditorPlugin
+# tentativa única: abre lm.tscn, seleciona o LightmapGI e aperta o botão "Bake Lightmaps" do editor 3D
+func _enter_tree():
+	get_tree().create_timer(4.0).timeout.connect(_ir)
+
+func _ir():
+	EditorInterface.open_scene_from_path("res://efeitos/luz-assada/lightmapgi/assada.tscn")
+	EditorInterface.set_main_screen_editor("3D")
+	await get_tree().create_timer(2.0).timeout
+	var raiz = EditorInterface.get_edited_scene_root()
+	var lm = raiz.get_node("LightmapGI")
+	EditorInterface.get_selection().clear()
+	EditorInterface.get_selection().add_node(lm)
+	EditorInterface.edit_node(lm)
+	await get_tree().create_timer(2.0).timeout
+	var bts = EditorInterface.get_base_control().find_children("*", "Button", true, false).filter(func(b): return "Lightmap" in b.text or "Lightmaps" in b.tooltip_text)
+	print("ASSAR botoes: ", bts.map(func(b): return [b.text, b.is_visible_in_tree()]))
+	if bts.is_empty():
+		print("ASSAR sem botao"); get_tree().quit(); return
+	var t0 = Time.get_ticks_msec()
+	bts[0].emit_signal("pressed")
+	await get_tree().create_timer(1.0).timeout
+	for d in EditorInterface.get_base_control().find_children("*", "FileDialog", true, false):
+		if d.visible:
+			print("ASSAR dialogo: ", d.get_class(), " ", d.filters)
+			d.hide()
+			d.file_selected.emit("res://efeitos/luz-assada/lightmapgi/assada.lmbake")
+	print("ASSAR apertou; data=", lm.light_data, " ms=", Time.get_ticks_msec() - t0)
+	for i in 120:
+		await get_tree().create_timer(1.0).timeout
+		if lm.light_data != null:
+			print("ASSAR pronto: ", lm.light_data.resource_path, " ms=", Time.get_ticks_msec() - t0)
+			EditorInterface.save_scene()
+			break
+	print("ASSAR fim data=", lm.light_data)
+	get_tree().quit()
+
+

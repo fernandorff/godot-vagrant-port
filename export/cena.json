@@ -1,0 +1,4351 @@
+{
+ "revisao": "117",
+ "hora": "fimdetarde",
+ "planta": "mundo",
+ "escuro": true,
+ "query": "?overlay=0",
+ "camera": {
+  "pos": [
+   19,
+   5.514362685672278,
+   18.273630769381157
+  ],
+  "quat": [
+   -0.13498484096891586,
+   0,
+   0,
+   0.9908476637246497
+  ],
+  "fov": 50,
+  "near": 0.2,
+  "far": 200,
+  "aspect": 1.7791666666666666,
+  "janela": [
+   1281,
+   720
+  ],
+  "pixelRatio": 1
+ },
+ "fog": {
+  "cor": "#6e5a66",
+  "near": 8,
+  "far": 144
+ },
+ "clear": "#000000",
+ "ambiente": {
+  "cor": "#0a0b11",
+  "intensidade": 0
+ },
+ "hemisferio": {
+  "ceu": "#6b6093",
+  "chao": "#332319",
+  "intensidade": 0.5
+ },
+ "sol": {
+  "cor": "#ff9351",
+  "intensidade": 1.25,
+  "pos": [
+   -86.05113176787117,
+   50.714191408883934,
+   -21.148365921176495
+  ],
+  "alvo": [
+   19,
+   0,
+   7
+  ],
+  "castShadow": true,
+  "mapa": [
+   2048,
+   2048
+  ],
+  "caixa": {
+   "l": -32,
+   "r": 32,
+   "t": 32,
+   "b": -32,
+   "near": 1,
+   "far": 220
+  },
+  "bias": -0.0006
+ },
+ "HORA": {
+  "el": 25,
+  "az": 195,
+  "sol": [
+   1,
+   0.58,
+   0.32
+  ],
+  "si": 1.25,
+  "ceu": [
+   0.42,
+   0.38,
+   0.58
+  ],
+  "chao": [
+   0.2,
+   0.14,
+   0.1
+  ],
+  "ci": 0.5,
+  "zen": "#26315e",
+  "hor": "#e7834f",
+  "nev": "#6e5a66",
+  "estrelas": 0
+ },
+ "sombras": {
+  "habilitado": true,
+  "tipo": "PCFSoft"
+ },
+ "luzes": [
+  {
+   "i": 0,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.7433,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": true,
+   "mapa": [
+    512,
+    512
+   ],
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 1,
+   "pos": [
+    3,
+    5.4,
+    14.75
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.1702,
+   "forcaBase": 1.3,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": true,
+   "mapa": [
+    512,
+    512
+   ],
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": false,
+   "nome": "Tocha da parede norte, noroeste da sala"
+  },
+  {
+   "i": 2,
+   "pos": [
+    21.25,
+    5.4,
+    29
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.4561,
+   "forcaBase": 1.3,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": false,
+   "nome": "Tocha da parede leste, noroeste da sala (a mais ao sul)"
+  },
+  {
+   "i": 3,
+   "pos": [
+    41.25,
+    5.4,
+    17
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.2426,
+   "forcaBase": 1.3,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": false,
+   "nome": "Tocha da parede leste, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 4,
+   "pos": [
+    16.75,
+    5.4,
+    33
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.2817,
+   "forcaBase": 1.3,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": false,
+   "nome": "Tocha da parede oeste, oeste da sala"
+  },
+  {
+   "i": 5,
+   "pos": [
+    27.25,
+    5.4,
+    47
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.3691,
+   "forcaBase": 1.3,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": false,
+   "nome": "Tocha da parede leste, oeste da sala"
+  },
+  {
+   "i": 6,
+   "pos": [
+    21,
+    5.4,
+    52.75
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.3332,
+   "forcaBase": 1.3,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": false,
+   "nome": "Tocha da parede norte, oeste da sala"
+  },
+  {
+   "i": 7,
+   "pos": [
+    5,
+    4.95,
+    53
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.5262,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, oeste da sala (a mais a oeste)"
+  },
+  {
+   "i": 8,
+   "pos": [
+    39,
+    5.4,
+    60.75
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.2901,
+   "forcaBase": 1.3,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": false,
+   "nome": "Tocha da parede norte, sudoeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 9,
+   "pos": [
+    43,
+    5.4,
+    66.75
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.3703,
+   "forcaBase": 1.3,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": false,
+   "nome": "Tocha da parede norte, sudoeste da sala (a mais ao sul)"
+  },
+  {
+   "i": 10,
+   "pos": [
+    5,
+    4.95,
+    85
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 2.0442,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, sudoeste da sala (a mais a oeste)"
+  },
+  {
+   "i": 11,
+   "pos": [
+    37,
+    4.95,
+    85
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.8277,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, sudoeste da sala (a mais a leste)"
+  },
+  {
+   "i": 12,
+   "pos": [
+    167,
+    3.95,
+    41
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.4715,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, leste da sala"
+  },
+  {
+   "i": 13,
+   "pos": [
+    177,
+    6.4,
+    51.25
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 1.3333,
+   "forcaBase": 1.3,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": false,
+   "nome": "Tocha da parede sul, leste da sala"
+  },
+  {
+   "i": 14,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 15,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 16,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 17,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 18,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 19,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 20,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 21,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 22,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  },
+  {
+   "i": 23,
+   "pos": [
+    29,
+    2.95,
+    13
+   ],
+   "cor": "#ff9e4c",
+   "intensidadeAgora": 0,
+   "forcaBase": 1.8,
+   "distancia": 10,
+   "decay": 2,
+   "castShadow": false,
+   "mapa": null,
+   "bias": -0.0032,
+   "near": 0.3,
+   "far": 10,
+   "braseiro": true,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)"
+  }
+ ],
+ "fogos": [
+  {
+   "i": 0,
+   "nome": "Braseiro, noroeste da sala (a mais ao sul)",
+   "braseiro": true,
+   "apagada": true,
+   "forca": 1.8,
+   "chama": [
+    17,
+    2.95,
+    17
+   ]
+  },
+  {
+   "i": 1,
+   "nome": "Braseiro, noroeste da sala (a mais ao norte)",
+   "braseiro": true,
+   "apagada": false,
+   "forca": 1.8,
+   "chama": [
+    29,
+    2.95,
+    13
+   ]
+  },
+  {
+   "i": 2,
+   "nome": "Tocha da parede norte, noroeste da sala",
+   "braseiro": false,
+   "apagada": false,
+   "forca": 1.3,
+   "chama": [
+    3,
+    5.4,
+    14.75
+   ]
+  },
+  {
+   "i": 3,
+   "nome": "Tocha da parede leste, noroeste da sala (a mais ao norte)",
+   "braseiro": false,
+   "apagada": false,
+   "forca": 1.3,
+   "chama": [
+    41.25,
+    5.4,
+    17
+   ]
+  },
+  {
+   "i": 4,
+   "nome": "Tocha da parede leste, noroeste da sala (a mais ao sul)",
+   "braseiro": false,
+   "apagada": false,
+   "forca": 1.3,
+   "chama": [
+    21.25,
+    5.4,
+    29
+   ]
+  },
+  {
+   "i": 5,
+   "nome": "Tocha da parede oeste, oeste da sala",
+   "braseiro": false,
+   "apagada": false,
+   "forca": 1.3,
+   "chama": [
+    16.75,
+    5.4,
+    33
+   ]
+  },
+  {
+   "i": 6,
+   "nome": "Tocha da parede leste, oeste da sala",
+   "braseiro": false,
+   "apagada": false,
+   "forca": 1.3,
+   "chama": [
+    27.25,
+    5.4,
+    47
+   ]
+  },
+  {
+   "i": 7,
+   "nome": "Braseiro, oeste da sala (a mais a oeste)",
+   "braseiro": true,
+   "apagada": false,
+   "forca": 1.8,
+   "chama": [
+    5,
+    4.95,
+    53
+   ]
+  },
+  {
+   "i": 8,
+   "nome": "Braseiro, oeste da sala (a mais a leste)",
+   "braseiro": true,
+   "apagada": true,
+   "forca": 1.8,
+   "chama": [
+    37,
+    4.95,
+    53
+   ]
+  },
+  {
+   "i": 9,
+   "nome": "Braseiro, sudoeste da sala (a mais a oeste)",
+   "braseiro": true,
+   "apagada": false,
+   "forca": 1.8,
+   "chama": [
+    5,
+    4.95,
+    85
+   ]
+  },
+  {
+   "i": 10,
+   "nome": "Braseiro, sudoeste da sala (a mais a leste)",
+   "braseiro": true,
+   "apagada": false,
+   "forca": 1.8,
+   "chama": [
+    37,
+    4.95,
+    85
+   ]
+  },
+  {
+   "i": 11,
+   "nome": "Tocha da parede oeste, sudoeste da sala",
+   "braseiro": false,
+   "apagada": true,
+   "forca": 1.3,
+   "chama": [
+    2.75,
+    5.4,
+    67
+   ]
+  },
+  {
+   "i": 12,
+   "nome": "Tocha da parede norte, sudoeste da sala (a mais ao norte)",
+   "braseiro": false,
+   "apagada": false,
+   "forca": 1.3,
+   "chama": [
+    39,
+    5.4,
+    60.75
+   ]
+  },
+  {
+   "i": 13,
+   "nome": "Tocha da parede norte, oeste da sala",
+   "braseiro": false,
+   "apagada": false,
+   "forca": 1.3,
+   "chama": [
+    21,
+    5.4,
+    52.75
+   ]
+  },
+  {
+   "i": 14,
+   "nome": "Tocha da parede sul, sudoeste da sala",
+   "braseiro": false,
+   "apagada": true,
+   "forca": 1.3,
+   "chama": [
+    21,
+    5.4,
+    85.25
+   ]
+  },
+  {
+   "i": 15,
+   "nome": "Tocha da parede norte, sudoeste da sala (a mais ao sul)",
+   "braseiro": false,
+   "apagada": false,
+   "forca": 1.3,
+   "chama": [
+    43,
+    5.4,
+    66.75
+   ]
+  },
+  {
+   "i": 16,
+   "nome": "Braseiro, leste da sala",
+   "braseiro": true,
+   "apagada": false,
+   "forca": 1.8,
+   "chama": [
+    167,
+    3.95,
+    41
+   ]
+  },
+  {
+   "i": 17,
+   "nome": "Tocha da parede sul, leste da sala",
+   "braseiro": false,
+   "apagada": false,
+   "forca": 1.3,
+   "chama": [
+    177,
+    6.4,
+    51.25
+   ]
+  }
+ ],
+ "painel": {
+  "calls": 47,
+  "triangulos": 29877
+ },
+ "nos": {
+  "n0": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 4400,
+   "mat": "MeshLambertMaterial"
+  },
+  "n1": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 192,
+   "mat": "MeshLambertMaterial"
+  },
+  "n2": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 4336,
+   "mat": "MeshLambertMaterial"
+  },
+  "n3": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n4": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 240,
+   "mat": "MeshLambertMaterial"
+  },
+  "n5": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 200,
+   "mat": "MeshLambertMaterial"
+  },
+  "n6": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n7": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 160,
+   "mat": "MeshLambertMaterial"
+  },
+  "n8": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n9": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n10": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n11": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n12": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n13": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n14": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n15": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n16": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n17": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n18": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n19": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n20": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n21": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n22": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n23": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n24": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n25": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n26": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n27": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n28": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n29": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n30": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n31": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n32": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n33": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 64,
+   "mat": "MeshLambertMaterial"
+  },
+  "n34": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 120,
+   "mat": "MeshLambertMaterial"
+  },
+  "n35": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 160,
+   "mat": "MeshLambertMaterial"
+  },
+  "n36": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 64,
+   "mat": "MeshLambertMaterial"
+  },
+  "n37": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n38": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n39": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 76,
+   "mat": "MeshLambertMaterial"
+  },
+  "n40": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 76,
+   "mat": "MeshLambertMaterial"
+  },
+  "n41": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n42": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n43": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n44": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n45": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 200,
+   "mat": "MeshLambertMaterial"
+  },
+  "n46": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 160,
+   "mat": "MeshLambertMaterial"
+  },
+  "n47": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 64,
+   "mat": "MeshLambertMaterial"
+  },
+  "n48": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 360,
+   "mat": "MeshLambertMaterial"
+  },
+  "n49": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 64,
+   "mat": "MeshLambertMaterial"
+  },
+  "n50": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n51": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n52": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n53": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n54": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 280,
+   "mat": "MeshLambertMaterial"
+  },
+  "n55": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n56": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n57": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n58": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n59": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n60": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n61": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n62": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n63": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 120,
+   "mat": "MeshLambertMaterial"
+  },
+  "n64": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n65": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n66": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n67": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 76,
+   "mat": "MeshLambertMaterial"
+  },
+  "n68": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 76,
+   "mat": "MeshLambertMaterial"
+  },
+  "n69": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 240,
+   "mat": "MeshLambertMaterial"
+  },
+  "n70": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n71": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n72": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n73": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 160,
+   "mat": "MeshLambertMaterial"
+  },
+  "n74": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 160,
+   "mat": "MeshLambertMaterial"
+  },
+  "n75": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 160,
+   "mat": "MeshLambertMaterial"
+  },
+  "n76": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 200,
+   "mat": "MeshLambertMaterial"
+  },
+  "n77": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 416,
+   "mat": "MeshLambertMaterial"
+  },
+  "n78": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 216,
+   "mat": "MeshLambertMaterial"
+  },
+  "n79": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n80": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n81": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n82": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n83": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 76,
+   "mat": "MeshLambertMaterial"
+  },
+  "n84": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 76,
+   "mat": "MeshLambertMaterial"
+  },
+  "n85": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 76,
+   "mat": "MeshLambertMaterial"
+  },
+  "n86": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 76,
+   "mat": "MeshLambertMaterial"
+  },
+  "n87": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n88": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n89": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n90": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n91": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n92": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 80,
+   "mat": "MeshLambertMaterial"
+  },
+  "n93": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n94": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n95": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n96": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 40,
+   "mat": "MeshLambertMaterial"
+  },
+  "n97": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n98": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n99": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n100": {
+   "vis": false,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n101": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 712,
+   "mat": "MeshLambertMaterial"
+  },
+  "n102": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n103": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 84,
+   "mat": "MeshLambertMaterial"
+  },
+  "n104": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n105": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n106": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n107": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n108": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 84,
+   "mat": "MeshLambertMaterial"
+  },
+  "n109": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n110": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n111": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n112": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n113": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 84,
+   "mat": "MeshLambertMaterial"
+  },
+  "n114": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n115": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n116": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n117": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n118": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 84,
+   "mat": "MeshLambertMaterial"
+  },
+  "n119": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n120": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n121": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n122": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n123": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n124": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n125": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n126": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n127": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n128": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n129": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n130": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n131": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n132": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n133": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n134": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n135": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n136": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n137": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n138": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n139": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n140": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n141": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n142": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n143": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n144": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n145": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n146": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n147": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n148": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n149": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n150": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n151": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n152": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n153": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n154": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n155": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n156": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n157": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n158": {
+   "vis": false,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n159": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n160": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n161": {
+   "vis": false,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n162": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n163": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n164": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n165": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n166": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n167": {
+   "vis": false,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n168": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n169": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n170": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n171": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n172": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 32,
+   "mat": "MeshLambertMaterial"
+  },
+  "n173": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Group"
+  },
+  "n174": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshLambertMaterial"
+  },
+  "n175": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": false,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshLambertMaterial"
+  },
+  "n176": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": true,
+   "tipo": "Group"
+  },
+  "n177": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 14784,
+   "mat": "MeshPhongMaterial"
+  },
+  "n178": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": true,
+   "tris": 1938,
+   "mat": "MeshPhongMaterial"
+  },
+  "n179": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 0,
+   "nocull": false,
+   "desenha": true,
+   "tris": 10878,
+   "mat": "MeshPhongMaterial"
+  },
+  "n180": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 0,
+   "nocull": false,
+   "desenha": true,
+   "tris": 462,
+   "mat": "MeshPhongMaterial"
+  },
+  "n181": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 7304,
+   "mat": "MeshPhongMaterial"
+  },
+  "n182": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 37200,
+   "mat": "MeshPhongMaterial"
+  },
+  "n183": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 2800,
+   "mat": "MeshPhongMaterial"
+  },
+  "n184": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": true,
+   "desenha": true,
+   "tris": 1056,
+   "mat": "ShaderMaterial"
+  },
+  "n185": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 708,
+   "mat": "MeshPhongMaterial"
+  },
+  "n186": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 108,
+   "mat": "MeshPhongMaterial"
+  },
+  "n187": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshBasicMaterial"
+  },
+  "n188": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 156,
+   "mat": "MeshPhongMaterial"
+  },
+  "n189": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshBasicMaterial"
+  },
+  "n190": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 84,
+   "mat": "MeshPhongMaterial"
+  },
+  "n191": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshBasicMaterial"
+  },
+  "n192": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 156,
+   "mat": "MeshPhongMaterial"
+  },
+  "n193": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshBasicMaterial"
+  },
+  "n194": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshPhongMaterial"
+  },
+  "n195": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 4,
+   "mat": "MeshPhongMaterial"
+  },
+  "n196": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.7,
+   "nocull": false,
+   "desenha": false,
+   "tris": 2,
+   "mat": "MeshPhongMaterial"
+  },
+  "n197": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshPhongMaterial"
+  },
+  "n198": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": true,
+   "tipo": "Group"
+  },
+  "n199": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 36,
+   "mat": "MeshPhongMaterial"
+  },
+  "n200": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshBasicMaterial"
+  },
+  "n201": {
+   "vis": false,
+   "cast": false,
+   "recebe": false,
+   "fora": true,
+   "tipo": "Group"
+  },
+  "n202": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.7,
+   "nocull": false,
+   "desenha": false,
+   "tris": 108,
+   "mat": "MeshPhongMaterial"
+  },
+  "n203": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshBasicMaterial"
+  },
+  "n204": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.7,
+   "nocull": false,
+   "desenha": false,
+   "tris": 156,
+   "mat": "MeshPhongMaterial"
+  },
+  "n205": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshBasicMaterial"
+  },
+  "n206": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.7,
+   "nocull": false,
+   "desenha": false,
+   "tris": 84,
+   "mat": "MeshPhongMaterial"
+  },
+  "n207": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshBasicMaterial"
+  },
+  "n208": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.7,
+   "nocull": false,
+   "desenha": false,
+   "tris": 156,
+   "mat": "MeshPhongMaterial"
+  },
+  "n209": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 24,
+   "mat": "MeshBasicMaterial"
+  },
+  "n210": {
+   "vis": true,
+   "cast": false,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.3,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshPhongMaterial"
+  },
+  "n211": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 4,
+   "mat": "MeshPhongMaterial"
+  },
+  "n212": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.7,
+   "nocull": false,
+   "desenha": false,
+   "tris": 2,
+   "mat": "MeshPhongMaterial"
+  },
+  "n213": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": true,
+   "tipo": "Group"
+  },
+  "n214": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.7,
+   "nocull": false,
+   "desenha": false,
+   "tris": 36,
+   "mat": "MeshPhongMaterial"
+  },
+  "n215": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.3,
+   "nocull": false,
+   "desenha": false,
+   "tris": 72,
+   "mat": "MeshPhongMaterial"
+  },
+  "n216": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.3,
+   "nocull": false,
+   "desenha": false,
+   "tris": 228,
+   "mat": "MeshPhongMaterial"
+  },
+  "n217": {
+   "vis": true,
+   "cast": true,
+   "recebe": true,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": true,
+   "ceu": 0.3,
+   "nocull": false,
+   "desenha": false,
+   "tris": 12,
+   "mat": "MeshPhongMaterial"
+  },
+  "n218": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": true,
+   "tipo": "Group"
+  },
+  "n219": {
+   "vis": true,
+   "cast": false,
+   "recebe": false,
+   "fora": true,
+   "tipo": "Mesh",
+   "sol": false,
+   "ceu": 1,
+   "nocull": false,
+   "desenha": false,
+   "tris": 16,
+   "mat": "MeshBasicMaterial"
+  }
+ },
+ "unidades": [
+  {
+   "i": 0,
+   "nome": "Ashley",
+   "zud": "Z001U00",
+   "pos": [
+    19,
+    0,
+    7
+   ],
+   "rotY": 3.141592653589793,
+   "no": "u0_Ashley",
+   "alt": 3.668655985791702,
+   "inimigo": false,
+   "clipe": "u0_parado",
+   "dur": 1.2,
+   "tracks": 29,
+   "tris": 466,
+   "corVertice": {
+    "max": 1.004,
+    "media": 1.004
+   },
+   "ossos": 29,
+   "gestos": {
+    "parado": [
+     "u0_c0"
+    ],
+    "andar": [
+     "u0_c2",
+     "u0_c3"
+    ],
+    "correr": [
+     "u0_c6",
+     "u0_c7"
+    ],
+    "golpe": [
+     "u0_c18"
+    ],
+    "magia": [
+     "u0_c24",
+     "u0_c25",
+     "u0_c26",
+     "u0_c27",
+     "u0_c28"
+    ]
+   },
+   "cx": 9,
+   "cz": 3,
+   "poses": {
+    "parado": {
+     "agacha": "u0_pulo_parado_agacha",
+     "impulso": "u0_pulo_parado_impulso",
+     "topo": "u0_pulo_parado_topo",
+     "queda": "u0_pulo_parado_queda",
+     "pouso": "u0_pulo_parado_pouso"
+    },
+    "andando": {
+     "agacha": "u0_pulo_andando_agacha",
+     "impulso": "u0_pulo_andando_impulso",
+     "topo": "u0_pulo_andando_topo",
+     "queda": "u0_pulo_andando_queda",
+     "pouso": "u0_pulo_andando_pouso"
+    },
+    "correndo": {
+     "agacha": "u0_pulo_correndo_agacha",
+     "impulso": "u0_pulo_correndo_impulso",
+     "topo": "u0_pulo_correndo_topo",
+     "queda": "u0_pulo_correndo_queda",
+     "pouso": "u0_pulo_correndo_pouso"
+    }
+   },
+   "duracoes": {
+    "u0_c0": 1.2,
+    "u0_c2": 0.48,
+    "u0_c3": 0.48,
+    "u0_c6": 0.4,
+    "u0_c7": 0.4,
+    "u0_c18": 1.52,
+    "u0_c24": 0.84,
+    "u0_c25": 0.64,
+    "u0_c26": 0.84,
+    "u0_c27": 0.56,
+    "u0_c28": 0.84,
+    "u0_pulo_parado_agacha": 0.08,
+    "u0_pulo_parado_impulso": 0.08,
+    "u0_pulo_parado_topo": 0.08,
+    "u0_pulo_parado_queda": 0.08,
+    "u0_pulo_parado_pouso": 0.08,
+    "u0_pulo_andando_agacha": 0.08,
+    "u0_pulo_andando_impulso": 0.08,
+    "u0_pulo_andando_topo": 0.08,
+    "u0_pulo_andando_queda": 0.08,
+    "u0_pulo_andando_pouso": 0.08,
+    "u0_pulo_correndo_agacha": 0.08,
+    "u0_pulo_correndo_impulso": 0.08,
+    "u0_pulo_correndo_topo": 0.08,
+    "u0_pulo_correndo_queda": 0.08,
+    "u0_pulo_correndo_pouso": 0.08
+   },
+   "mao": {
+    "mao": 28,
+    "ombro": 18,
+    "lado": 1,
+    "escudo": null
+   }
+  },
+  {
+   "i": 1,
+   "nome": "Espadachim",
+   "zud": "Z009U00",
+   "pos": [
+    21,
+    0,
+    7
+   ],
+   "rotY": 3.141592653589793,
+   "no": "u1_Espadachim",
+   "alt": 3.4873631057562307,
+   "inimigo": false,
+   "clipe": "u1_parado",
+   "dur": 3.6,
+   "tracks": 26,
+   "tris": 513,
+   "corVertice": {
+    "max": 1.004,
+    "media": 1.004
+   },
+   "ossos": 26,
+   "gestos": {
+    "parado": [
+     "u1_c0"
+    ],
+    "andar": [
+     "u1_c1",
+     "u1_c2"
+    ],
+    "correr": [
+     "u1_c5",
+     "u1_c6"
+    ],
+    "golpe": [
+     "u1_c16"
+    ]
+   },
+   "cx": 10,
+   "cz": 3,
+   "poses": {
+    "parado": {
+     "agacha": "u1_pulo_parado_agacha",
+     "impulso": "u1_pulo_parado_impulso",
+     "topo": "u1_pulo_parado_topo",
+     "queda": "u1_pulo_parado_queda",
+     "pouso": "u1_pulo_parado_pouso"
+    },
+    "andando": {
+     "agacha": "u1_pulo_andando_agacha",
+     "impulso": "u1_pulo_andando_impulso",
+     "topo": "u1_pulo_andando_topo",
+     "queda": "u1_pulo_andando_queda",
+     "pouso": "u1_pulo_andando_pouso"
+    },
+    "correndo": {
+     "agacha": "u1_pulo_correndo_agacha",
+     "impulso": "u1_pulo_correndo_impulso",
+     "topo": "u1_pulo_correndo_topo",
+     "queda": "u1_pulo_correndo_queda",
+     "pouso": "u1_pulo_correndo_pouso"
+    }
+   },
+   "duracoes": {
+    "u1_c0": 3.6,
+    "u1_c1": 0.48,
+    "u1_c2": 0.32,
+    "u1_c5": 0.32,
+    "u1_c6": 0.24,
+    "u1_c16": 2.44,
+    "u1_pulo_parado_agacha": 0.04,
+    "u1_pulo_parado_impulso": 0.04,
+    "u1_pulo_parado_topo": 0.04,
+    "u1_pulo_parado_queda": 0.04,
+    "u1_pulo_parado_pouso": 0.04,
+    "u1_pulo_andando_agacha": 0.04,
+    "u1_pulo_andando_impulso": 0.04,
+    "u1_pulo_andando_topo": 0.04,
+    "u1_pulo_andando_queda": 0.04,
+    "u1_pulo_andando_pouso": 0.04,
+    "u1_pulo_correndo_agacha": 0.04,
+    "u1_pulo_correndo_impulso": 0.04,
+    "u1_pulo_correndo_topo": 0.04,
+    "u1_pulo_correndo_queda": 0.04,
+    "u1_pulo_correndo_pouso": 0.04
+   },
+   "mao": {
+    "mao": 25,
+    "ombro": 11,
+    "lado": 1,
+    "escudo": null
+   }
+  },
+  {
+   "i": 2,
+   "nome": "Besteiro",
+   "zud": "Z009U09",
+   "pos": [
+    23,
+    0,
+    7
+   ],
+   "rotY": 3.141592653589793,
+   "no": "u2_Besteiro",
+   "alt": 3.820230563353107,
+   "inimigo": false,
+   "clipe": "u2_parado",
+   "dur": 1.2,
+   "tracks": 26,
+   "tris": 534,
+   "corVertice": {
+    "max": 1.004,
+    "media": 1.004
+   },
+   "ossos": 26,
+   "gestos": {
+    "parado": [
+     "u2_c0"
+    ],
+    "andar": [
+     "u2_c2",
+     "u2_c3"
+    ],
+    "correr": [
+     "u2_c6",
+     "u2_c7"
+    ],
+    "golpe": [
+     "u2_c18"
+    ],
+    "magia": [
+     "u2_c24",
+     "u2_c25",
+     "u2_c26",
+     "u2_c27",
+     "u2_c28"
+    ]
+   },
+   "cx": 11,
+   "cz": 3,
+   "poses": {
+    "parado": {
+     "agacha": "u2_pulo_parado_agacha",
+     "impulso": "u2_pulo_parado_impulso",
+     "topo": "u2_pulo_parado_topo",
+     "queda": "u2_pulo_parado_queda",
+     "pouso": "u2_pulo_parado_pouso"
+    },
+    "andando": {
+     "agacha": "u2_pulo_andando_agacha",
+     "impulso": "u2_pulo_andando_impulso",
+     "topo": "u2_pulo_andando_topo",
+     "queda": "u2_pulo_andando_queda",
+     "pouso": "u2_pulo_andando_pouso"
+    },
+    "correndo": {
+     "agacha": "u2_pulo_correndo_agacha",
+     "impulso": "u2_pulo_correndo_impulso",
+     "topo": "u2_pulo_correndo_topo",
+     "queda": "u2_pulo_correndo_queda",
+     "pouso": "u2_pulo_correndo_pouso"
+    }
+   },
+   "duracoes": {
+    "u2_c0": 1.2,
+    "u2_c2": 0.48,
+    "u2_c3": 0.48,
+    "u2_c6": 0.4,
+    "u2_c7": 0.4,
+    "u2_c18": 1.6400000000000001,
+    "u2_c24": 0.76,
+    "u2_c25": 0.4,
+    "u2_c26": 0.52,
+    "u2_c27": 0.4,
+    "u2_c28": 0.64,
+    "u2_pulo_parado_agacha": 0.08,
+    "u2_pulo_parado_impulso": 0.08,
+    "u2_pulo_parado_topo": 0.08,
+    "u2_pulo_parado_queda": 0.08,
+    "u2_pulo_parado_pouso": 0.08,
+    "u2_pulo_andando_agacha": 0.08,
+    "u2_pulo_andando_impulso": 0.08,
+    "u2_pulo_andando_topo": 0.08,
+    "u2_pulo_andando_queda": 0.08,
+    "u2_pulo_andando_pouso": 0.08,
+    "u2_pulo_correndo_agacha": 0.08,
+    "u2_pulo_correndo_impulso": 0.08,
+    "u2_pulo_correndo_topo": 0.08,
+    "u2_pulo_correndo_queda": 0.08,
+    "u2_pulo_correndo_pouso": 0.08
+   },
+   "mao": {
+    "mao": 25,
+    "ombro": 11,
+    "lado": -1,
+    "escudo": null
+   }
+  },
+  {
+   "i": 3,
+   "nome": "Maga",
+   "zud": "Z060U00",
+   "pos": [
+    25,
+    0,
+    7
+   ],
+   "rotY": 3.141592653589793,
+   "no": "u3_Maga",
+   "alt": 3.563421194528928,
+   "inimigo": false,
+   "clipe": "u3_parado",
+   "dur": 1.2,
+   "tracks": 56,
+   "tris": 546,
+   "corVertice": {
+    "max": 1.004,
+    "media": 1.004
+   },
+   "ossos": 28,
+   "gestos": {
+    "parado": [
+     "u3_c0"
+    ],
+    "andar": [
+     "u3_c2",
+     "u3_c3"
+    ],
+    "correr": [
+     "u3_c6",
+     "u3_c7"
+    ],
+    "golpe": [
+     "u3_c16"
+    ],
+    "magia": [
+     "u3_c22",
+     "u3_c23",
+     "u3_c24",
+     "u3_c25",
+     "u3_c26"
+    ]
+   },
+   "cx": 12,
+   "cz": 3,
+   "poses": {
+    "parado": {
+     "agacha": "u3_pulo_parado_agacha",
+     "impulso": "u3_pulo_parado_impulso",
+     "topo": "u3_pulo_parado_topo",
+     "queda": "u3_pulo_parado_queda",
+     "pouso": "u3_pulo_parado_pouso"
+    },
+    "andando": {
+     "agacha": "u3_pulo_andando_agacha",
+     "impulso": "u3_pulo_andando_impulso",
+     "topo": "u3_pulo_andando_topo",
+     "queda": "u3_pulo_andando_queda",
+     "pouso": "u3_pulo_andando_pouso"
+    },
+    "correndo": {
+     "agacha": "u3_pulo_correndo_agacha",
+     "impulso": "u3_pulo_correndo_impulso",
+     "topo": "u3_pulo_correndo_topo",
+     "queda": "u3_pulo_correndo_queda",
+     "pouso": "u3_pulo_correndo_pouso"
+    }
+   },
+   "duracoes": {
+    "u3_c0": 1.2,
+    "u3_c2": 0.48,
+    "u3_c3": 0.48,
+    "u3_c6": 0.4,
+    "u3_c7": 0.4,
+    "u3_c16": 1.6400000000000001,
+    "u3_c22": 1.24,
+    "u3_c23": 1.2,
+    "u3_c24": 1.24,
+    "u3_c25": 0.64,
+    "u3_c26": 0.04,
+    "u3_pulo_parado_agacha": 0.04,
+    "u3_pulo_parado_impulso": 0.04,
+    "u3_pulo_parado_topo": 0.04,
+    "u3_pulo_parado_queda": 0.04,
+    "u3_pulo_parado_pouso": 0.04,
+    "u3_pulo_andando_agacha": 0.04,
+    "u3_pulo_andando_impulso": 0.04,
+    "u3_pulo_andando_topo": 0.04,
+    "u3_pulo_andando_queda": 0.04,
+    "u3_pulo_andando_pouso": 0.04,
+    "u3_pulo_correndo_agacha": 0.04,
+    "u3_pulo_correndo_impulso": 0.04,
+    "u3_pulo_correndo_topo": 0.04,
+    "u3_pulo_correndo_queda": 0.04,
+    "u3_pulo_correndo_pouso": 0.04
+   },
+   "mao": {
+    "mao": 26,
+    "ombro": 9,
+    "lado": -1,
+    "escudo": null
+   }
+  },
+  {
+   "i": 4,
+   "nome": "Esqueleto",
+   "zud": "Z028U04",
+   "pos": [
+    19,
+    0,
+    63
+   ],
+   "rotY": 0,
+   "no": "u4_Esqueleto",
+   "alt": 3.3834117124060867,
+   "inimigo": true,
+   "clipe": "u4_parado",
+   "dur": 2.4,
+   "tracks": 26,
+   "tris": 616,
+   "corVertice": {
+    "max": 1.004,
+    "media": 1.004
+   },
+   "ossos": 26,
+   "gestos": {
+    "parado": [
+     "u4_c0"
+    ],
+    "andar": [
+     "u4_c1",
+     "u4_c2"
+    ],
+    "correr": [
+     "u4_c5",
+     "u4_c6"
+    ],
+    "golpe": [
+     "u4_c14"
+    ]
+   },
+   "cx": 9,
+   "cz": 31,
+   "poses": {
+    "parado": {
+     "agacha": "u4_pulo_parado_agacha",
+     "impulso": "u4_pulo_parado_impulso",
+     "topo": "u4_pulo_parado_topo",
+     "queda": "u4_pulo_parado_queda",
+     "pouso": "u4_pulo_parado_pouso"
+    },
+    "andando": {
+     "agacha": "u4_pulo_andando_agacha",
+     "impulso": "u4_pulo_andando_impulso",
+     "topo": "u4_pulo_andando_topo",
+     "queda": "u4_pulo_andando_queda",
+     "pouso": "u4_pulo_andando_pouso"
+    },
+    "correndo": {
+     "agacha": "u4_pulo_correndo_agacha",
+     "impulso": "u4_pulo_correndo_impulso",
+     "topo": "u4_pulo_correndo_topo",
+     "queda": "u4_pulo_correndo_queda",
+     "pouso": "u4_pulo_correndo_pouso"
+    }
+   },
+   "duracoes": {
+    "u4_c0": 2.4,
+    "u4_c1": 0.48,
+    "u4_c2": 0.48,
+    "u4_c5": 0.4,
+    "u4_c6": 0.4,
+    "u4_c14": 2.44,
+    "u4_pulo_parado_agacha": 0.04,
+    "u4_pulo_parado_impulso": 0.04,
+    "u4_pulo_parado_topo": 0.04,
+    "u4_pulo_parado_queda": 0.04,
+    "u4_pulo_parado_pouso": 0.04,
+    "u4_pulo_andando_agacha": 0.04,
+    "u4_pulo_andando_impulso": 0.04,
+    "u4_pulo_andando_topo": 0.04,
+    "u4_pulo_andando_queda": 0.04,
+    "u4_pulo_andando_pouso": 0.04,
+    "u4_pulo_correndo_agacha": 0.04,
+    "u4_pulo_correndo_impulso": 0.04,
+    "u4_pulo_correndo_topo": 0.04,
+    "u4_pulo_correndo_queda": 0.04,
+    "u4_pulo_correndo_pouso": 0.04
+   },
+   "mao": {
+    "mao": 25,
+    "ombro": 11,
+    "lado": 1,
+    "escudo": "u4_w1_arm"
+   }
+  },
+  {
+   "i": 5,
+   "nome": "Minotauro",
+   "zud": "Z050U03",
+   "pos": [
+    23,
+    0,
+    63
+   ],
+   "rotY": 0,
+   "no": "u5_Minotauro",
+   "alt": 4.88189135108405,
+   "inimigo": true,
+   "clipe": "u5_parado",
+   "dur": 2.4,
+   "tracks": 30,
+   "tris": 737,
+   "corVertice": {
+    "max": 1.004,
+    "media": 1.004
+   },
+   "ossos": 30,
+   "gestos": {
+    "parado": [
+     "u5_c0"
+    ],
+    "andar": [
+     "u5_c1",
+     "u5_c2"
+    ],
+    "correr": [
+     "u5_c5",
+     "u5_c6"
+    ],
+    "golpe": [
+     "u5_c16"
+    ],
+    "magia": [
+     "u5_c22",
+     "u5_c23",
+     "u5_c24",
+     "u5_c25",
+     "u5_c26"
+    ]
+   },
+   "cx": 11,
+   "cz": 31,
+   "poses": {
+    "parado": {
+     "agacha": "u5_pulo_parado_agacha",
+     "impulso": "u5_pulo_parado_impulso",
+     "topo": "u5_pulo_parado_topo",
+     "queda": "u5_pulo_parado_queda",
+     "pouso": "u5_pulo_parado_pouso"
+    },
+    "andando": {
+     "agacha": "u5_pulo_andando_agacha",
+     "impulso": "u5_pulo_andando_impulso",
+     "topo": "u5_pulo_andando_topo",
+     "queda": "u5_pulo_andando_queda",
+     "pouso": "u5_pulo_andando_pouso"
+    },
+    "correndo": {
+     "agacha": "u5_pulo_correndo_agacha",
+     "impulso": "u5_pulo_correndo_impulso",
+     "topo": "u5_pulo_correndo_topo",
+     "queda": "u5_pulo_correndo_queda",
+     "pouso": "u5_pulo_correndo_pouso"
+    }
+   },
+   "duracoes": {
+    "u5_c0": 2.4,
+    "u5_c1": 0.8,
+    "u5_c2": 0.8,
+    "u5_c5": 0.4,
+    "u5_c6": 0.4,
+    "u5_c16": 1.6,
+    "u5_c22": 0.8,
+    "u5_c23": 0.4,
+    "u5_c24": 0.6,
+    "u5_c25": 0.2,
+    "u5_c26": 0.6,
+    "u5_pulo_parado_agacha": 0.04,
+    "u5_pulo_parado_impulso": 0.04,
+    "u5_pulo_parado_topo": 0.04,
+    "u5_pulo_parado_queda": 0.04,
+    "u5_pulo_parado_pouso": 0.04,
+    "u5_pulo_andando_agacha": 0.04,
+    "u5_pulo_andando_impulso": 0.04,
+    "u5_pulo_andando_topo": 0.04,
+    "u5_pulo_andando_queda": 0.04,
+    "u5_pulo_andando_pouso": 0.04,
+    "u5_pulo_correndo_agacha": 0.04,
+    "u5_pulo_correndo_impulso": 0.04,
+    "u5_pulo_correndo_topo": 0.04,
+    "u5_pulo_correndo_queda": 0.04,
+    "u5_pulo_correndo_pouso": 0.04
+   },
+   "mao": {
+    "mao": 26,
+    "ombro": 9,
+    "lado": -1,
+    "escudo": null
+   }
+  },
+  {
+   "i": 6,
+   "nome": "Esqueleto 2",
+   "zud": "Z028U04",
+   "pos": [
+    61,
+    0.5243950299016361,
+    41
+   ],
+   "rotY": 0,
+   "no": "u6_Esqueleto2",
+   "alt": 3.3834117124060867,
+   "inimigo": true,
+   "clipe": "u6_parado",
+   "dur": 2.4,
+   "tracks": 26,
+   "tris": 616,
+   "corVertice": {
+    "max": 1.004,
+    "media": 1.004
+   },
+   "ossos": 26,
+   "gestos": {
+    "parado": [
+     "u6_c0"
+    ],
+    "andar": [
+     "u6_c1",
+     "u6_c2"
+    ],
+    "correr": [
+     "u6_c5",
+     "u6_c6"
+    ],
+    "golpe": [
+     "u6_c14"
+    ]
+   },
+   "cx": 30,
+   "cz": 20,
+   "poses": {
+    "parado": {
+     "agacha": "u6_pulo_parado_agacha",
+     "impulso": "u6_pulo_parado_impulso",
+     "topo": "u6_pulo_parado_topo",
+     "queda": "u6_pulo_parado_queda",
+     "pouso": "u6_pulo_parado_pouso"
+    },
+    "andando": {
+     "agacha": "u6_pulo_andando_agacha",
+     "impulso": "u6_pulo_andando_impulso",
+     "topo": "u6_pulo_andando_topo",
+     "queda": "u6_pulo_andando_queda",
+     "pouso": "u6_pulo_andando_pouso"
+    },
+    "correndo": {
+     "agacha": "u6_pulo_correndo_agacha",
+     "impulso": "u6_pulo_correndo_impulso",
+     "topo": "u6_pulo_correndo_topo",
+     "queda": "u6_pulo_correndo_queda",
+     "pouso": "u6_pulo_correndo_pouso"
+    }
+   },
+   "duracoes": {
+    "u6_c0": 2.4,
+    "u6_c1": 0.48,
+    "u6_c2": 0.48,
+    "u6_c5": 0.4,
+    "u6_c6": 0.4,
+    "u6_c14": 2.44,
+    "u6_pulo_parado_agacha": 0.04,
+    "u6_pulo_parado_impulso": 0.04,
+    "u6_pulo_parado_topo": 0.04,
+    "u6_pulo_parado_queda": 0.04,
+    "u6_pulo_parado_pouso": 0.04,
+    "u6_pulo_andando_agacha": 0.04,
+    "u6_pulo_andando_impulso": 0.04,
+    "u6_pulo_andando_topo": 0.04,
+    "u6_pulo_andando_queda": 0.04,
+    "u6_pulo_andando_pouso": 0.04,
+    "u6_pulo_correndo_agacha": 0.04,
+    "u6_pulo_correndo_impulso": 0.04,
+    "u6_pulo_correndo_topo": 0.04,
+    "u6_pulo_correndo_queda": 0.04,
+    "u6_pulo_correndo_pouso": 0.04
+   },
+   "mao": {
+    "mao": 25,
+    "ombro": 11,
+    "lado": 1,
+    "escudo": "u6_w1_arm"
+   }
+  },
+  {
+   "i": 7,
+   "nome": "Minotauro 2",
+   "zud": "Z050U03",
+   "pos": [
+    111,
+    0.6571040832383396,
+    61
+   ],
+   "rotY": 0,
+   "no": "u7_Minotauro2",
+   "alt": 4.88189135108405,
+   "inimigo": true,
+   "clipe": "u7_parado",
+   "dur": 2.4,
+   "tracks": 30,
+   "tris": 737,
+   "corVertice": {
+    "max": 1.004,
+    "media": 1.004
+   },
+   "ossos": 30,
+   "gestos": {
+    "parado": [
+     "u7_c0"
+    ],
+    "andar": [
+     "u7_c1",
+     "u7_c2"
+    ],
+    "correr": [
+     "u7_c5",
+     "u7_c6"
+    ],
+    "golpe": [
+     "u7_c16"
+    ],
+    "magia": [
+     "u7_c22",
+     "u7_c23",
+     "u7_c24",
+     "u7_c25",
+     "u7_c26"
+    ]
+   },
+   "cx": 55,
+   "cz": 30,
+   "poses": {
+    "parado": {
+     "agacha": "u7_pulo_parado_agacha",
+     "impulso": "u7_pulo_parado_impulso",
+     "topo": "u7_pulo_parado_topo",
+     "queda": "u7_pulo_parado_queda",
+     "pouso": "u7_pulo_parado_pouso"
+    },
+    "andando": {
+     "agacha": "u7_pulo_andando_agacha",
+     "impulso": "u7_pulo_andando_impulso",
+     "topo": "u7_pulo_andando_topo",
+     "queda": "u7_pulo_andando_queda",
+     "pouso": "u7_pulo_andando_pouso"
+    },
+    "correndo": {
+     "agacha": "u7_pulo_correndo_agacha",
+     "impulso": "u7_pulo_correndo_impulso",
+     "topo": "u7_pulo_correndo_topo",
+     "queda": "u7_pulo_correndo_queda",
+     "pouso": "u7_pulo_correndo_pouso"
+    }
+   },
+   "duracoes": {
+    "u7_c0": 2.4,
+    "u7_c1": 0.8,
+    "u7_c2": 0.8,
+    "u7_c5": 0.4,
+    "u7_c6": 0.4,
+    "u7_c16": 1.6,
+    "u7_c22": 0.8,
+    "u7_c23": 0.4,
+    "u7_c24": 0.6,
+    "u7_c25": 0.2,
+    "u7_c26": 0.6,
+    "u7_pulo_parado_agacha": 0.04,
+    "u7_pulo_parado_impulso": 0.04,
+    "u7_pulo_parado_topo": 0.04,
+    "u7_pulo_parado_queda": 0.04,
+    "u7_pulo_parado_pouso": 0.04,
+    "u7_pulo_andando_agacha": 0.04,
+    "u7_pulo_andando_impulso": 0.04,
+    "u7_pulo_andando_topo": 0.04,
+    "u7_pulo_andando_queda": 0.04,
+    "u7_pulo_andando_pouso": 0.04,
+    "u7_pulo_correndo_agacha": 0.04,
+    "u7_pulo_correndo_impulso": 0.04,
+    "u7_pulo_correndo_topo": 0.04,
+    "u7_pulo_correndo_queda": 0.04,
+    "u7_pulo_correndo_pouso": 0.04
+   },
+   "mao": {
+    "mao": 26,
+    "ombro": 9,
+    "lado": -1,
+    "escudo": null
+   }
+  }
+ ],
+ "verificaSkin": [
+  {
+   "u": 0,
+   "erroMaxTiles": 9.27e-7
+  },
+  {
+   "u": 1,
+   "erroMaxTiles": 9.07e-7
+  },
+  {
+   "u": 2,
+   "erroMaxTiles": 2.21e-7
+  },
+  {
+   "u": 3,
+   "erroMaxTiles": 9.34e-7
+  },
+  {
+   "u": 4,
+   "erroMaxTiles": 0.00000275
+  },
+  {
+   "u": 5,
+   "erroMaxTiles": 0.00000179
+  },
+  {
+   "u": 6,
+   "erroMaxTiles": 0.00000118
+  },
+  {
+   "u": 7,
+   "erroMaxTiles": 0.00000216
+  }
+ ]
+}

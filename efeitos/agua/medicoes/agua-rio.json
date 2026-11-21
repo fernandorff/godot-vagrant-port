@@ -1,0 +1,902 @@
+[
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [],
+  "fps1pctLow": 359.45,
+  "fpsMedio": 540.78,
+  "fpsPorSegundo": [
+   613,
+   632,
+   582,
+   594,
+   496,
+   532,
+   450,
+   525,
+   507,
+   478
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.85,
+  "msP99": 2.78,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 5409,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "base",
+  "rodada": 1,
+  "gpuAntes": [
+   4,
+   5,
+   4
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/nativo"
+  ],
+  "fps1pctLow": 269.18,
+  "fpsMedio": 414.68,
+  "fpsPorSegundo": [
+   421,
+   429,
+   511,
+   404,
+   380,
+   396,
+   387,
+   383,
+   406,
+   430
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 2.41,
+  "msP99": 3.72,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 4147,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/nativo",
+  "rodada": 1,
+  "gpuAntes": [
+   5,
+   4,
+   4
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/ssr-water"
+  ],
+  "fps1pctLow": 300,
+  "fpsMedio": 458.44,
+  "fpsPorSegundo": [
+   629,
+   636,
+   455,
+   437,
+   430,
+   385,
+   375,
+   426,
+   399,
+   413
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 2.18,
+  "msP99": 3.33,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 4585,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/ssr-water",
+  "rodada": 1,
+  "gpuAntes": [
+   5,
+   4,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/waterbox"
+  ],
+  "fps1pctLow": 305.81,
+  "fpsMedio": 615.14,
+  "fpsPorSegundo": [
+   550,
+   579,
+   561,
+   516,
+   609,
+   700,
+   680,
+   677,
+   598,
+   682
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.63,
+  "msP99": 3.27,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 6152,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/waterbox",
+  "rodada": 1,
+  "gpuAntes": [
+   3,
+   4,
+   4
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/interativa-namey5"
+  ],
+  "fps1pctLow": 330,
+  "fpsMedio": 512.55,
+  "fpsPorSegundo": [
+   582,
+   643,
+   607,
+   466,
+   476,
+   405,
+   464,
+   472,
+   488,
+   523
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.95,
+  "msP99": 3.03,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 5126,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/interativa-namey5",
+  "rodada": 1,
+  "gpuAntes": [
+   5,
+   2,
+   3
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [],
+  "fps1pctLow": 300,
+  "fpsMedio": 543.96,
+  "fpsPorSegundo": [
+   580,
+   547,
+   614,
+   458,
+   478,
+   527,
+   488,
+   509,
+   635,
+   604
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.84,
+  "msP99": 3.33,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 5440,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "base",
+  "rodada": 2,
+  "gpuAntes": [
+   3,
+   3,
+   3
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/nativo"
+  ],
+  "fps1pctLow": 420,
+  "fpsMedio": 615.99,
+  "fpsPorSegundo": [
+   653,
+   723,
+   688,
+   602,
+   615,
+   598,
+   542,
+   574,
+   581,
+   584
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.62,
+  "msP99": 2.38,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 6160,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/nativo",
+  "rodada": 2,
+  "gpuAntes": [
+   2,
+   3,
+   2
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/ssr-water"
+  ],
+  "fps1pctLow": 420,
+  "fpsMedio": 669.04,
+  "fpsPorSegundo": [
+   699,
+   684,
+   683,
+   656,
+   638,
+   655,
+   636,
+   675,
+   675,
+   690
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.49,
+  "msP99": 2.38,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 6691,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/ssr-water",
+  "rodada": 2,
+  "gpuAntes": [
+   5,
+   3,
+   3
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/waterbox"
+  ],
+  "fps1pctLow": 372.58,
+  "fpsMedio": 574.83,
+  "fpsPorSegundo": [
+   618,
+   560,
+   649,
+   571,
+   539,
+   564,
+   597,
+   519,
+   561,
+   571
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.74,
+  "msP99": 2.68,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 5749,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/waterbox",
+  "rodada": 2,
+  "gpuAntes": [
+   5,
+   3,
+   3
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/interativa-namey5"
+  ],
+  "fps1pctLow": 300,
+  "fpsMedio": 570.67,
+  "fpsPorSegundo": [
+   539,
+   571,
+   620,
+   561,
+   522,
+   544,
+   603,
+   573,
+   602,
+   572
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.75,
+  "msP99": 3.33,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 5707,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/interativa-namey5",
+  "rodada": 2,
+  "gpuAntes": [
+   5,
+   2,
+   4
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [],
+  "fps1pctLow": 330,
+  "fpsMedio": 562.96,
+  "fpsPorSegundo": [
+   563,
+   561,
+   551,
+   565,
+   583,
+   571,
+   480,
+   582,
+   568,
+   606
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.78,
+  "msP99": 3.03,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 5630,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "base",
+  "rodada": 3,
+  "gpuAntes": [
+   2,
+   2,
+   3
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/nativo"
+  ],
+  "fps1pctLow": 270,
+  "fpsMedio": 482.64,
+  "fpsPorSegundo": [
+   524,
+   457,
+   474,
+   480,
+   532,
+   519,
+   489,
+   452,
+   448,
+   452
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 2.07,
+  "msP99": 3.7,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 4827,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/nativo",
+  "rodada": 3,
+  "gpuAntes": [
+   4,
+   2,
+   3
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/ssr-water"
+  ],
+  "fps1pctLow": 345.07,
+  "fpsMedio": 569.85,
+  "fpsPorSegundo": [
+   587,
+   633,
+   544,
+   556,
+   564,
+   584,
+   533,
+   523,
+   600,
+   575
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.75,
+  "msP99": 2.9,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 5699,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/ssr-water",
+  "rodada": 3,
+  "gpuAntes": [
+   11,
+   13,
+   11,
+   11,
+   9
+  ],
+  "foraDoMetodo": true,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/waterbox"
+  ],
+  "fps1pctLow": 368.32,
+  "fpsMedio": 599.63,
+  "fpsPorSegundo": [
+   611,
+   608,
+   596,
+   607,
+   606,
+   598,
+   614,
+   620,
+   593,
+   544
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.67,
+  "msP99": 2.72,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 5997,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/waterbox",
+  "rodada": 3,
+  "gpuAntes": [
+   12,
+   12,
+   11,
+   12,
+   11
+  ],
+  "foraDoMetodo": true,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 192,
+  "drawVisivel": 45,
+  "efeitos": [
+   "agua/interativa-namey5"
+  ],
+  "fps1pctLow": 335.12,
+  "fpsMedio": 517.81,
+  "fpsPorSegundo": [
+   494,
+   482,
+   539,
+   509,
+   467,
+   615,
+   506,
+   509,
+   522,
+   536
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.93,
+  "msP99": 2.98,
+  "nosFaltando": 0,
+  "primSombra": 171491,
+  "primVisivel": 82697,
+  "quadros": 5179,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "rio",
+  "variante": "agua/interativa-namey5",
+  "rodada": 3,
+  "gpuAntes": [
+   12,
+   12,
+   12,
+   11,
+   11
+  ],
+  "foraDoMetodo": true,
+  "errosNoLog": []
+ }
+]

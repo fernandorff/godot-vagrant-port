@@ -1,0 +1,16 @@
+padrão (pesado, sombra suave, escuro) r1: 259.1 fps (1% low 124.4)
+GPU ocupada, rodada abortada
+padrão (pesado, sombra suave, escuro) r2: 199.8 fps (1% low 87.3)
+padrão (pesado, sombra suave, escuro) r3: 227.2 fps (1% low 122.9)
+sem sombras r1: 477.2 fps (1% low 197.9)
+sem sombras r2: 438.4 fps (1% low 145.8)
+sem sombras r3: 548.9 fps (1% low 235.8)
+sombra dura r1: 241.3 fps (1% low 113)
+sombra dura r2: 284.8 fps (1% low 144.8)
+sombra dura r3: 254 fps (1% low 133.7)
+sombra suave + PCSS r1: 189.8 fps (1% low 85)
+sombra suave + PCSS r2: 223.5 fps (1% low 109.6)
+GPU ocupada, rodada abortada
+GPU ocupada, rodada abortada
+GPU ocupada, rodada abortada
+fim

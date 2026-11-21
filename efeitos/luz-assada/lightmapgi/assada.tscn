@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://d0wlep1rfmsrq"]
+
+[ext_resource type="PackedScene" uid="uid://gc5dy6vkla4t" path="res://efeitos/luz-assada/lightmapgi/sala-uv2.glb" id="1_jkq0u"]
+[ext_resource type="LightmapGIData" uid="uid://d0omableq6ps2" path="res://efeitos/luz-assada/lightmapgi/assada.lmbake" id="2_py6iv"]
+
+[node name="LuzAssada" type="Node3D" unique_id=457665509]
+
+[node name="Sala" parent="." unique_id=666734790 instance=ExtResource("1_jkq0u")]
+
+[node name="Luz0" type="OmniLight3D" parent="." unique_id=1135710482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 2.95, 13)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.63
+omni_range = 10.0
+
+[node name="Luz1" type="OmniLight3D" parent="." unique_id=338605802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5.4, 14.75)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.455
+omni_range = 10.0
+
+[node name="Luz2" type="OmniLight3D" parent="." unique_id=457354423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.25, 5.4, 29)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.455
+omni_range = 10.0
+
+[node name="Luz3" type="OmniLight3D" parent="." unique_id=714277882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.25, 5.4, 17)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.455
+omni_range = 10.0
+
+[node name="Luz4" type="OmniLight3D" parent="." unique_id=26123959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.75, 5.4, 33)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.455
+omni_range = 10.0
+
+[node name="Luz5" type="OmniLight3D" parent="." unique_id=924142742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.25, 5.4, 47)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.455
+omni_range = 10.0
+
+[node name="Luz6" type="OmniLight3D" parent="." unique_id=868327846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 5.4, 52.75)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.455
+omni_range = 10.0
+
+[node name="Luz7" type="OmniLight3D" parent="." unique_id=1234745696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.95, 53)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.63
+omni_range = 10.0
+
+[node name="Luz8" type="OmniLight3D" parent="." unique_id=319477729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 5.4, 60.75)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.455
+omni_range = 10.0
+
+[node name="Luz9" type="OmniLight3D" parent="." unique_id=255681813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 5.4, 66.75)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.455
+omni_range = 10.0
+
+[node name="Luz10" type="OmniLight3D" parent="." unique_id=101193417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.95, 85)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.63
+omni_range = 10.0
+
+[node name="Luz11" type="OmniLight3D" parent="." unique_id=1601514200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 4.95, 85)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.63
+omni_range = 10.0
+
+[node name="Luz12" type="OmniLight3D" parent="." unique_id=2081378506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167, 3.95, 41)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.63
+omni_range = 10.0
+
+[node name="Luz13" type="OmniLight3D" parent="." unique_id=2093438005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177, 6.4, 51.25)
+light_color = Color(1, 0.61960787, 0.29803923, 1)
+light_energy = 0.455
+omni_range = 10.0
+
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=1626533740]
+quality = 0
+interior = true
+environment_mode = 0
+light_data = ExtResource("2_py6iv")

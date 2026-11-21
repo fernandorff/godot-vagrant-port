@@ -1,0 +1,122 @@
+{
+ "metodo": "sala-fechada.html (planta mundo, 1280x720), Chrome com flags da bancada, janela fora da tela, espera 8 s + mede 10 s por rAF, 3 rodadas, mediana",
+ "inicio": "2026-11-21T00:14:15.752Z",
+ "casos": {
+  "padrão (pesado, sombra suave, escuro)": {
+   "q": "overlay=0",
+   "fpsMediana": 227.2,
+   "fps1pctLowMediana": 122.9,
+   "rodadas": [
+    {
+     "inner": "1280x720",
+     "fps": 259.1,
+     "fps1pctLow": 124.4,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    },
+    {
+     "inner": "1280x720",
+     "fps": 199.8,
+     "fps1pctLow": 87.3,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    },
+    {
+     "inner": "1280x720",
+     "fps": 227.2,
+     "fps1pctLow": 122.9,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    }
+   ]
+  },
+  "sem sombras": {
+   "q": "overlay=0&sombras=nao",
+   "fpsMediana": 477.2,
+   "fps1pctLowMediana": 197.9,
+   "rodadas": [
+    {
+     "inner": "1280x720",
+     "fps": 477.2,
+     "fps1pctLow": 197.9,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    },
+    {
+     "inner": "1280x720",
+     "fps": 438.4,
+     "fps1pctLow": 145.8,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    },
+    {
+     "inner": "1280x720",
+     "fps": 548.9,
+     "fps1pctLow": 235.8,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    }
+   ]
+  },
+  "sombra dura": {
+   "q": "overlay=0&sombras=dura",
+   "fpsMediana": 254,
+   "fps1pctLowMediana": 133.7,
+   "rodadas": [
+    {
+     "inner": "1280x720",
+     "fps": 241.3,
+     "fps1pctLow": 113,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    },
+    {
+     "inner": "1280x720",
+     "fps": 284.8,
+     "fps1pctLow": 144.8,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    },
+    {
+     "inner": "1280x720",
+     "fps": 254,
+     "fps1pctLow": 133.7,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    }
+   ]
+  },
+  "sombra suave + PCSS": {
+   "q": "overlay=0&difusa=pcss",
+   "fpsMediana": 223.5,
+   "fps1pctLowMediana": 109.6,
+   "rodadas": [
+    {
+     "inner": "1280x720",
+     "fps": 189.8,
+     "fps1pctLow": 85,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    },
+    {
+     "inner": "1280x720",
+     "fps": 223.5,
+     "fps1pctLow": 109.6,
+     "vis": "visible",
+     "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+     "erros": []
+    }
+   ]
+  }
+ }
+}

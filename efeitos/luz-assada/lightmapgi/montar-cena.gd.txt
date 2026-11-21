@@ -1,0 +1,40 @@
+extends SceneTree
+# monta lm.tscn: sala com UV2 + as 14 luzes acesas (iguais ao vagrant.gd, modo DINÂMICO: o bake guarda só a luz indireta) + LightmapGI
+func _init():
+	var meta = JSON.parse_string(FileAccess.get_file_as_string("res://cena.json"))
+	var raiz := Node3D.new()
+	raiz.name = "LuzAssada"
+	var sala: Node3D = (load("res://efeitos/luz-assada/lightmapgi/sala-uv2.glb") as PackedScene).instantiate()
+	sala.name = "Sala"
+	raiz.add_child(sala)
+	sala.owner = raiz
+	var uv2 := 0
+	for mi in sala.find_children("*", "MeshInstance3D", true, false):
+		for i in mi.mesh.get_surface_count():
+			if mi.mesh.surface_get_format(i) & Mesh.ARRAY_FORMAT_TEX_UV2: uv2 += 1; break
+	print("malhas com UV2: ", uv2)
+	var n := 0
+	for l in meta.luzes:
+		if l.intensidadeAgora <= 0.0: continue
+		var o := OmniLight3D.new()
+		o.name = "Luz%d" % n
+		o.position = Vector3(l.pos[0], l.pos[1], l.pos[2])
+		o.light_color = Color(l.cor)
+		o.light_energy = (l.forcaBase if l.forcaBase != null else l.intensidadeAgora) * 0.35
+		o.omni_range = l.distancia
+		o.light_bake_mode = Light3D.BAKE_DYNAMIC
+		raiz.add_child(o)
+		o.owner = raiz
+		n += 1
+	var lm := LightmapGI.new()
+	lm.name = "LightmapGI"
+	lm.quality = LightmapGI.BAKE_QUALITY_LOW
+	lm.interior = true
+	lm.environment_mode = LightmapGI.ENVIRONMENT_MODE_DISABLED
+	raiz.add_child(lm)
+	lm.owner = raiz
+	var ps := PackedScene.new()
+	ps.pack(raiz)
+	print("salvo: ", ResourceSaver.save(ps, "res://efeitos/luz-assada/lightmapgi/assada.tscn"), " luzes ", n)
+	quit()
+

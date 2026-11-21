@@ -1,0 +1,1076 @@
+[
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 189,
+  "drawVisivel": 47,
+  "efeitos": [],
+  "fps1pctLow": 540,
+  "fpsMedio": 789.67,
+  "fpsPorSegundo": [
+   789,
+   794,
+   680,
+   744,
+   778,
+   818,
+   853,
+   812,
+   846,
+   783
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.27,
+  "msP99": 1.85,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7897,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "base",
+  "rodada": 1,
+  "gpuAntes": [
+   4,
+   4,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-visuals-gd4"
+  ],
+  "fps1pctLow": 651.04,
+  "fpsMedio": 760.25,
+  "fpsPorSegundo": [
+   766,
+   782,
+   758,
+   725,
+   762,
+   763,
+   745,
+   775,
+   767,
+   760
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.32,
+  "msP99": 1.54,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7603,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-visuals-gd4",
+  "rodada": 1,
+  "gpuAntes": [
+   5,
+   5,
+   4
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/ursc"
+  ],
+  "fps1pctLow": 480,
+  "fpsMedio": 744.92,
+  "fpsPorSegundo": [
+   755,
+   804,
+   727,
+   673,
+   770,
+   724,
+   730,
+   762,
+   746,
+   759
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.34,
+  "msP99": 2.08,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7450,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/ursc",
+  "rodada": 1,
+  "gpuAntes": [
+   4,
+   5,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-style-demo"
+  ],
+  "fps1pctLow": 480,
+  "fpsMedio": 728.27,
+  "fpsPorSegundo": [
+   747,
+   759,
+   719,
+   755,
+   667,
+   733,
+   766,
+   666,
+   748,
+   723
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.37,
+  "msP99": 2.08,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7283,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-style-demo",
+  "rodada": 1,
+  "gpuAntes": [
+   5,
+   4,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-look-free"
+  ],
+  "fps1pctLow": 480,
+  "fpsMedio": 755.36,
+  "fpsPorSegundo": [
+   817,
+   794,
+   714,
+   647,
+   793,
+   801,
+   711,
+   729,
+   787,
+   761
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.32,
+  "msP99": 2.08,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7554,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-look-free",
+  "rodada": 1,
+  "gpuAntes": [
+   4,
+   5,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-fcidade"
+  ],
+  "fps1pctLow": 625.39,
+  "fpsMedio": 782.38,
+  "fpsPorSegundo": [
+   783,
+   822,
+   794,
+   771,
+   758,
+   746,
+   776,
+   806,
+   781,
+   787
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.28,
+  "msP99": 1.6,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7824,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-fcidade",
+  "rodada": 1,
+  "gpuAntes": [
+   4,
+   4,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 189,
+  "drawVisivel": 47,
+  "efeitos": [],
+  "fps1pctLow": 613.2,
+  "fpsMedio": 800.03,
+  "fpsPorSegundo": [
+   791,
+   786,
+   801,
+   791,
+   820,
+   784,
+   785,
+   810,
+   817,
+   816
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.25,
+  "msP99": 1.63,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 8001,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "base",
+  "rodada": 2,
+  "gpuAntes": [
+   4,
+   4,
+   4
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-visuals-gd4"
+  ],
+  "fps1pctLow": 600,
+  "fpsMedio": 767.02,
+  "fpsPorSegundo": [
+   797,
+   803,
+   758,
+   736,
+   767,
+   748,
+   740,
+   778,
+   775,
+   769
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.3,
+  "msP99": 1.67,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7671,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-visuals-gd4",
+  "rodada": 2,
+  "gpuAntes": [
+   5,
+   3,
+   4
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/ursc"
+  ],
+  "fps1pctLow": 542.01,
+  "fpsMedio": 732.79,
+  "fpsPorSegundo": [
+   733,
+   750,
+   736,
+   679,
+   724,
+   741,
+   742,
+   745,
+   739,
+   739
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.36,
+  "msP99": 1.84,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7328,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/ursc",
+  "rodada": 2,
+  "gpuAntes": [
+   5,
+   3,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-style-demo"
+  ],
+  "fps1pctLow": 600,
+  "fpsMedio": 771.47,
+  "fpsPorSegundo": [
+   775,
+   772,
+   788,
+   745,
+   762,
+   754,
+   771,
+   796,
+   765,
+   787
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.3,
+  "msP99": 1.67,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7715,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-style-demo",
+  "rodada": 2,
+  "gpuAntes": [
+   4,
+   5,
+   3
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-look-free"
+  ],
+  "fps1pctLow": 600,
+  "fpsMedio": 781,
+  "fpsPorSegundo": [
+   773,
+   784,
+   765,
+   780,
+   790,
+   778,
+   761,
+   789,
+   803,
+   788
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.28,
+  "msP99": 1.67,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7811,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-look-free",
+  "rodada": 2,
+  "gpuAntes": [
+   5,
+   3,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-fcidade"
+  ],
+  "fps1pctLow": 600,
+  "fpsMedio": 773.02,
+  "fpsPorSegundo": [
+   761,
+   773,
+   766,
+   747,
+   775,
+   761,
+   796,
+   789,
+   787,
+   776
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.29,
+  "msP99": 1.67,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7731,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-fcidade",
+  "rodada": 2,
+  "gpuAntes": [
+   5,
+   5,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 189,
+  "drawVisivel": 47,
+  "efeitos": [],
+  "fps1pctLow": 600,
+  "fpsMedio": 784.32,
+  "fpsPorSegundo": [
+   801,
+   798,
+   760,
+   765,
+   801,
+   750,
+   806,
+   769,
+   796,
+   798
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.27,
+  "msP99": 1.67,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7844,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "base",
+  "rodada": 3,
+  "gpuAntes": [
+   4,
+   3,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-visuals-gd4"
+  ],
+  "fps1pctLow": 517.87,
+  "fpsMedio": 747.07,
+  "fpsPorSegundo": [
+   734,
+   764,
+   720,
+   746,
+   759,
+   761,
+   740,
+   772,
+   757,
+   718
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.34,
+  "msP99": 1.93,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7471,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-visuals-gd4",
+  "rodada": 3,
+  "gpuAntes": [
+   5,
+   3,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/ursc"
+  ],
+  "fps1pctLow": 540,
+  "fpsMedio": 725.5,
+  "fpsPorSegundo": [
+   740,
+   722,
+   778,
+   721,
+   675,
+   708,
+   723,
+   733,
+   757,
+   698
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.38,
+  "msP99": 1.85,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7255,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/ursc",
+  "rodada": 3,
+  "gpuAntes": [
+   5,
+   5,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-style-demo"
+  ],
+  "fps1pctLow": 540,
+  "fpsMedio": 731,
+  "fpsPorSegundo": [
+   784,
+   770,
+   688,
+   677,
+   731,
+   727,
+   744,
+   752,
+   750,
+   688
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.37,
+  "msP99": 1.85,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7311,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-style-demo",
+  "rodada": 3,
+  "gpuAntes": [
+   5,
+   4,
+   4
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-look-free"
+  ],
+  "fps1pctLow": 660,
+  "fpsMedio": 812.86,
+  "fpsPorSegundo": [
+   817,
+   815,
+   840,
+   774,
+   797,
+   802,
+   806,
+   804,
+   843,
+   831
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.23,
+  "msP99": 1.52,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 8129,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-look-free",
+  "rodada": 3,
+  "gpuAntes": [
+   5,
+   5,
+   3
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ },
+ {
+  "caso": 1,
+  "claro": false,
+  "drawSombra": 182,
+  "drawVisivel": 46,
+  "efeitos": [
+   "visual-ps1/psx-fcidade"
+  ],
+  "fps1pctLow": 660,
+  "fpsMedio": 773.25,
+  "fpsPorSegundo": [
+   778,
+   759,
+   762,
+   718,
+   777,
+   788,
+   789,
+   773,
+   793,
+   796
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070",
+  "igualar": false,
+  "janela": {
+   "maxFps": 0,
+   "modo": 0,
+   "pos": [
+    20008,
+    1473
+   ],
+   "tam": [
+    1280,
+    720
+   ],
+   "vsync": 0
+  },
+  "luzesPonto": 14,
+  "luzesPontoComSombra": 2,
+  "msMedio": 1.29,
+  "msP99": 1.52,
+  "nosFaltando": 0,
+  "primSombra": 124187,
+  "primVisivel": 20261,
+  "quadros": 7733,
+  "renderizador": "forward_plus",
+  "segundosMedidos": 10,
+  "solComSombra": true,
+  "versao": "4.7.2-stable (official)",
+  "vista": "padrao",
+  "variante": "visual-ps1/psx-fcidade",
+  "rodada": 3,
+  "gpuAntes": [
+   5,
+   4,
+   5
+  ],
+  "foraDoMetodo": false,
+  "errosNoLog": []
+ }
+]
