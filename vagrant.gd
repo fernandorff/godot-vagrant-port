@@ -201,6 +201,29 @@ func _testes() -> bool:
 		var aneis := rio.aneis.slots.filter(func(a: Vector4) -> bool: return a.z > 0.0).size()
 		print("RIO andou %.2f, lento %.2f, molhado %s, y %.3f, anéis %d, gotas %d" % [(u.no.position - p0).length(), u.lento, Grade.molha(u.no.position), u.no.position.y, aneis, rio.vivas])
 		_print_png(png)
+	elif "--mistura" in args:  # formato da mistura entre 2 poses paradas do pulo (0,5 s): fração do caminho em 20/50/80% do tempo
+		var an0 := u.player.get_animation(u.player.current_animation)
+		var sk := u.player.get_node(u.player.root_node).get_node(NodePath(an0.track_get_path(0).get_concatenated_names())) as Skeleton3D
+		var fases: Dictionary = u.poses["parado"]
+		set_process(false)
+		bonecos.set_process(false)
+		u.player.play(fases["agacha"], 0.0)
+		for i in 10: await get_tree().process_frame
+		var osso := 1
+		var qa := sk.get_bone_pose_rotation(osso)
+		var t0 := Time.get_ticks_usec()
+		u.mistura(fases["topo"], 0.5)
+		var amostras: Array = []
+		while Time.get_ticks_usec() - t0 < 700000:
+			await get_tree().process_frame
+			amostras.append([(Time.get_ticks_usec() - t0) / 500000.0, sk.get_bone_pose_rotation(osso)])
+		var qb: Quaternion = amostras[-1][1]
+		var total := qa.angle_to(qb)
+		var linha: Array = []
+		for alvo: float in [0.2, 0.5, 0.8]:
+			for a: Array in amostras:
+				if a[0] >= alvo: linha.append("%.0f%% do tempo: %.2f" % [alvo * 100, qa.angle_to(a[1]) / maxf(total, 1e-6)]); break
+		print("MISTURA (ângulo total %.3f rad) %s" % [total, linha])
 	elif "--gestos-todos" in args:  # cada boneco toca cada gesto 0,6 s; conta as poses distintas do 2º osso do seu esqueleto
 		for b: Unidade in bonecos.unidades:
 			var an0 := b.player.get_animation(b.player.current_animation)

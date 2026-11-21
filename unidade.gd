@@ -103,7 +103,12 @@ func _proximo(dur := ENCADEIA) -> void:
 			toca(gesto(), de)
 			return
 		fila = gestos[atual].duplicate()
-	player.play(fila.pop_front(), dur)
+	mistura(fila.pop_front(), dur)
+
+func mistura(clipe: String, dur: float) -> void:  # toca o clipe misturando a partir da pose atual
+	# shortcut: mistura linear (o Three faz curva S). O play_with_capture com TRANS_SINE pula direto para a pose final em
+	# trilhas de esqueleto (medido 21/11, --mistura); a curva S de verdade pede AnimationTree com xfade_curve.
+	player.play(clipe, dur)
 
 func gesto() -> String:
 	if dirigido: return "correr" if corre_vs else "andar"
@@ -148,7 +153,7 @@ func no_ar() -> bool:
 	return pulando and not (pulo_agacha > 0.0)
 
 func _poe_fase(fases: Dictionary, fase: String) -> void:
-	if player.current_animation != fases[fase]: player.play(fases[fase], MISTURA[fase] * QUADRO)
+	if player.current_animation != fases[fase]: mistura(fases[fase], MISTURA[fase] * QUADRO)
 
 func _volta() -> void:
 	atual = ""
