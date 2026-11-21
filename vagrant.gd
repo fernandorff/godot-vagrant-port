@@ -201,11 +201,11 @@ func _testes() -> bool:
 		var aneis := rio.aneis.slots.filter(func(a: Vector4) -> bool: return a.z > 0.0).size()
 		print("RIO andou %.2f, lento %.2f, molhado %s, y %.3f, anéis %d, gotas %d" % [(u.no.position - p0).length(), u.lento, Grade.molha(u.no.position), u.no.position.y, aneis, rio.vivas])
 		_print_png(png)
-	elif "--controle-real" in args:  # 20 s ouvindo o controle de verdade (janela escondida): cada botão e eixo, e onde o herói foi
-		print("CONTROLE-REAL: aperte os botões agora (20 s); aparelhos: %s" % [Input.get_connected_joypads().map(func(d: int) -> String: return Input.get_joy_name(d))])
+	elif "--controle-real" in args:  # 12 s ouvindo o controle de verdade (cabe antes do fim da medição com --saida): cada botão e eixo, e onde o herói foi
+		print("CONTROLE-REAL: aperte os botões agora (12 s); aparelhos: %s" % [Input.get_connected_joypads().map(func(d: int) -> String: return Input.get_joy_name(d))])
 		var p0 := u.no.position
 		var az0 := camera.az
-		await get_tree().create_timer(20.0).timeout
+		await get_tree().create_timer(12.0).timeout
 		print("CONTROLE-REAL fim: herói andou %.2f, câmera girou %.2f rad, escolhido %s, peso %s" % [(u.no.position - p0).length(), camera.az - az0, bonecos.sel.nome, Unidade.peso])
 	elif "--controle" in args:  # o controle por eventos: analógico anda, A pula, X golpe, LB troca, RS gira a câmera
 		var ev := InputEventJoypadMotion.new()

@@ -176,6 +176,8 @@ Origem: **[medido]** = rodado nesta noite; **[dedução]** = não provado.
 - **Controle de videogame** (mapa da página): analógico esquerdo anda; direito gira a câmera; direcional cima e baixo aproxima e afasta; A pula; X golpe; B fogo; LT raio; Y tocha; LB e RB trocam; RT segurado corre; RS apertado mexe na tocha fixa; Start abre o menu.
   - `--controle` (por eventos): o analógico anda 4,15, como o S; a câmera gira 1,1 rad em 0,5 s; A, X e RB funcionam **[medido]**.
   - Sem controle real conectado: falta testar com o controle de verdade.
+  - 21/11, controle de Xbox virtual (ViGEmBus + `vgamepad`, script em Python) com `--controle-real`: o Godot viu "XInput Controller" e recebeu os 17 comandos (analógicos, RT, LT, A, X, B, Y, LB, RB, direcional cima e baixo, RS, Start duas vezes). No fim, o herói andou 4,54, a câmera girou −1,75 rad e o escolhido mudou de herói **[medido]**.
+  - Falta o controle físico na mão: o virtual prova a leitura dos botões, não a sensação de jogo.
 - **Rio (etapa 8)** (`rio.gd` + `rio.gdshader`): o shader do rio da página (cópia do módulo `agua/nativo`, com saída bruta).
   - Anéis nos pés dos 8 bonecos ao vivo; passo a 0,65 dentro d'água; o disco de sombra some na água.
   - `--rio`, 2 s com S dentro do rio: Godot 2,63 contra 2,65 na página **[medido]**; cor média da água igual (31,5/26,6/24,3 contra 33,4/27,5/25,4).
