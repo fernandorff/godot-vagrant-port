@@ -8,7 +8,7 @@ const RAIO := 90.0  # px: quanto o dedo afasta para o analógico chegar a 1
 const BOTOES := [  # [texto, botão ou eixo, posição a partir do canto inferior direito]
 	["A", JOY_BUTTON_A, Vector2(-110, -110)], ["X", JOY_BUTTON_X, Vector2(-220, -150)], ["B", JOY_BUTTON_B, Vector2(-110, -230)],
 	["Y", JOY_BUTTON_Y, Vector2(-220, -270)], ["LB", JOY_BUTTON_LEFT_SHOULDER, Vector2(-330, -330)],
-	["RB", JOY_BUTTON_RIGHT_SHOULDER, Vector2(-110, -350)], ["Corre", -1, Vector2(-330, -200)], ["☰", JOY_BUTTON_START, Vector2(-80, -500)],
+	["RB", JOY_BUTTON_RIGHT_SHOULDER, Vector2(-110, -350)], ["Corre", -1, Vector2(-330, -200)], ["☰", JOY_BUTTON_START, Vector2(-80, -500)], ["⛶", -2, Vector2(-200, 0)],
 ]
 
 var _dedos := {}  # índice do toque -> "esq", "dir" ou o botão
@@ -32,7 +32,9 @@ func _ready() -> void:
 
 func _posiciona() -> void:
 	var t := get_viewport().get_visible_rect().size
-	for par: Array in _bases: (par[0] as Control).position = t + (par[1][2] as Vector2) - Vector2(42, 42)
+	for par: Array in _bases:
+		var o: Vector2 = par[1][2]
+		(par[0] as Control).position = (Vector2(t.x + o.x, 40) if o.y == 0 else t + o) - Vector2(42, 42)  # y 0 = no alto da tela
 
 func _botao_em(p: Vector2) -> Array:
 	for par: Array in _bases:
@@ -70,6 +72,12 @@ func _input(ev: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _aperta(botao: int, apertado: bool) -> void:
+	if botao == -2:  # tela cheia (no navegador só vale dentro de um toque) e celular deitado
+		if not apertado: return
+		var cheia := DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if cheia else DisplayServer.WINDOW_MODE_FULLSCREEN)
+		if OS.has_feature("web") and not cheia: JavaScriptBridge.eval("screen.orientation && screen.orientation.lock && screen.orientation.lock('landscape').catch(()=>{})")
+		return
 	if botao == -1:  # "Corre" liga e desliga o RT
 		if not apertado: return
 		_corre = not _corre
