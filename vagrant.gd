@@ -173,10 +173,10 @@ func _testes() -> bool:
 		await get_tree().process_frame
 		bonecos.usa.call()
 		await get_tree().create_timer(0.3).timeout
-		print("FIXA apagada %s, luz %s, energia %.2f, chama %s" % [f.apagada, f.luz.visible, f.luz.light_energy, f.chama_sprite.visible])
+		print("FIXA apagada %s, luz %s, energia %.2f, chama %s, poeira %.1f" % [f.apagada, f.luz.visible, f.luz.light_energy, f.chama_sprite.visible, _brilho_poeira()])
 		bonecos.usa.call()
 		await get_tree().create_timer(0.3).timeout
-		print("FIXA apagada %s, luz %s, energia %.2f, chama %s" % [f.apagada, f.luz.visible, f.luz.light_energy, f.chama_sprite.visible])
+		print("FIXA apagada %s, luz %s, energia %.2f, chama %s, poeira %.1f" % [f.apagada, f.luz.visible, f.luz.light_energy, f.chama_sprite.visible, _brilho_poeira()])
 	elif _arg("peso") != "":  # --peso=leve|medio|pesado: segura S 2 s com esse peso
 		while Unidade.peso != _arg("peso"): Unidade.troca_peso()
 		var ev := InputEventKey.new()
@@ -199,8 +199,14 @@ func _testes() -> bool:
 		var p0 := u.no.position
 		await get_tree().create_timer(2.0).timeout
 		var aneis := rio.aneis.slots.filter(func(a: Vector4) -> bool: return a.z > 0.0).size()
-		print("RIO andou %.2f, lento %.2f, molhado %s, y %.3f, anéis %d" % [(u.no.position - p0).length(), u.lento, Grade.molha(u.no.position), u.no.position.y, aneis])
+		print("RIO andou %.2f, lento %.2f, molhado %s, y %.3f, anéis %d, gotas %d" % [(u.no.position - p0).length(), u.lento, Grade.molha(u.no.position), u.no.position.y, aneis, rio.vivas])
 		_print_png(png)
+	elif "--controle-real" in args:  # 20 s ouvindo o controle de verdade (janela escondida): cada botão e eixo, e onde o herói foi
+		print("CONTROLE-REAL: aperte os botões agora (20 s); aparelhos: %s" % [Input.get_connected_joypads().map(func(d: int) -> String: return Input.get_joy_name(d))])
+		var p0 := u.no.position
+		var az0 := camera.az
+		await get_tree().create_timer(20.0).timeout
+		print("CONTROLE-REAL fim: herói andou %.2f, câmera girou %.2f rad, escolhido %s, peso %s" % [(u.no.position - p0).length(), camera.az - az0, bonecos.sel.nome, Unidade.peso])
 	elif "--controle" in args:  # o controle por eventos: analógico anda, A pula, X golpe, LB troca, RS gira a câmera
 		var ev := InputEventJoypadMotion.new()
 		ev.axis = JOY_AXIS_LEFT_Y
@@ -469,6 +475,7 @@ func _bonecos() -> void:
 			sm.set_shader_parameter("usa_cor_vertice", orig.vertex_color_use_as_albedo)
 			sm.set_shader_parameter("cor_luz", Color(meta.luzes[0].cor))  # valor bruto (uniform sem conversão de cor)
 			sm.set_shader_parameter("atenuacao_godot", atenuacao)
+			sm.set_shader_parameter("ver_sombra", "--ver-sombra" in OS.get_cmdline_user_args())
 			mi.set_surface_override_material(i, sm)
 			mats_boneco.append(sm)  # as malhas dos bonecos têm frustumCulled=false no Three: sempre desenhadas
 			var s: Dictionary = meta.sol
@@ -478,7 +485,7 @@ func _bonecos() -> void:
 			sm.set_shader_parameter("hemi_ceu", _v3(Color(hm.ceu)) * float(hm.intensidade))
 			sm.set_shader_parameter("hemi_chao", _v3(Color(hm.chao)) * float(hm.intensidade))
 		(mi as MeshInstance3D).layers = 1 | Luzes.CAMADA_BONECOS
-		if (mi as MeshInstance3D).skin == null: (mi as MeshInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF  # na página só o corpo (SkinnedMesh) projeta
+		if (mi as MeshInstance3D).skin == null or "--corpo-sem-sombra" in OS.get_cmdline_user_args(): (mi as MeshInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF  # na página só o corpo (SkinnedMesh) projeta
 	for u in bonecos.unidades:  # cada boneco com os seus materiais (para o fora de cada um)
 		for mi in u.no.find_children("*", "MeshInstance3D", true, false):
 			for i in mi.mesh.get_surface_count():
@@ -515,10 +522,21 @@ func _efeitos() -> void:  # contrato dos módulos (godot-candidatos/CONTRATO-MOD
 	for k in _arg("efeitos").split(",", false): efeitos.ligar(k)
 	if _arg("leva") == "1": bonecos.sel.leva.ligada = true  # --leva=1: tocha na mão acesa desde o início (medição)  # --efeitos=grupo/candidato,...: liga já na abertura (prints)
 
+func _input(ev: InputEvent) -> void:  # --controle-real: mostra cada botão e cada eixo que chega
+	if not "--controle-real" in OS.get_cmdline_user_args(): return
+	if ev is InputEventJoypadButton: print("  botão %d %s" % [ev.button_index, "aperta" if ev.pressed else "solta"])
+	elif ev is InputEventJoypadMotion and absf(ev.axis_value) > 0.5: print("  eixo %d %.2f" % [ev.axis, ev.axis_value])
+
+func _brilho_poeira() -> float:  # soma do vermelho dos grãos (teste --fixa)
+	var s := 0.0
+	for i in iluminacao.poeira0.size(): s += iluminacao.poeira.multimesh.get_instance_color(i).r
+	return s
+
 func _usa_fixa() -> bool:
 	var f := iluminacao.perto_de(bonecos.sel.no.position, 2.0)
 	if f == null: return false
 	f.apagada = not f.apagada
+	iluminacao.tinge()
 	return true
 
 func _usa_perto() -> bool:  # tecla E (sala-fechada.html:1388): a porta perto, senão a tocha fixa perto

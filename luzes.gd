@@ -428,16 +428,20 @@ func _particulas() -> void:
 	for i in 350:
 		var v := chao[rng.randi() % chao.size()] + Vector3(rng.randf_range(-1, 1), 0.3 + rng.randf() * 3.7, rng.randf_range(-1, 1))
 		poeira0.append(v)
-		var k := 0.0
-		# shortcut: tingida uma vez na abertura; a página tinge de novo quando uma tocha apaga (tinge()), trocar se a poeira acesa no escuro incomodar
-		for c in tochas: if not c.apagada: k += c.forca * pow(maxf(0.0, 1.0 - v.distance_to(c.luz.position) / 10.0), 2.0)
-		k = minf(1.2, k)
-		mm.set_instance_color(i, Color(k * 0.9, k * 0.75, k * 0.6))
 		mm.set_instance_transform(i, Transform3D(Basis(), v))
 	poeira = MultiMeshInstance3D.new()
 	poeira.multimesh = mm
 	poeira.custom_aabb = SEMPRE
 	add_child(poeira)
+	tinge()
+
+func tinge() -> void:  # tinge() da página (sala-fechada.html:948): cada grão pega a cor das tochas acesas perto; chamar ao acender ou apagar
+	if poeira == null: return
+	for i in poeira0.size():
+		var k := 0.0
+		for c in tochas: if not c.apagada: k += c.forca * pow(maxf(0.0, 1.0 - poeira0[i].distance_to(c.luz.position) / 10.0), 2.0)
+		k = minf(1.2, k)
+		poeira.multimesh.set_instance_color(i, Color(k * 0.9, k * 0.75, k * 0.6))
 
 func _fumaca() -> void:  # parâmetros lidos da página em 20/11 (export/fumaca.json: caixa, fontes, cor, densidade)
 	var f: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://export/fumaca.json"))

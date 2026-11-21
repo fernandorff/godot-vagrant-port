@@ -187,6 +187,7 @@ Origem: **[medido]** = rodado nesta noite; **[dedução]** = não provado.
   - Corpo da Ashley no rio, cor média: Godot 52/31/20, página 64/40/29 **[medido]**.
     - Sem a sombra do sol, o Godot dá 69/41/25: a diferença está na sombra do sol sobre o corpo **[medido]**.
     - O viés da sombra (0,1 a 0,8) não muda nada. Só o corpo projetar, como na página, também não **[medido]**.
+    - Causa (21/11): o Godot zera a sombra do sol nas faces de costas para o sol mesmo sem nada projetando (`--ver-sombra` com `--corpo-sem-sombra` deu o mesmo lado escuro); a página ali dá a meia luz. Correção em `boneco.gdshader`: de costas para o sol, a sombra do Godot é ignorada. Corpo agora 68,5/40,3/24,9 contra 66,7/41,2/29,5 da página, no mesmo recorte **[medido]**.
     - Causa ainda aberta.
 - **Os "55 fps" com a tocha na mão:** medição de 10 s, 3 rodadas intercaladas, com o RustDesk ligado (fora do método).
   - Sem tocha: 314, 319 e 307 fps; com tocha: 294, 274 e 262 fps. A tocha custa ~0,45 ms por quadro **[medido]**.

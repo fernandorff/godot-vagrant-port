@@ -43,9 +43,15 @@ void fragment() {
 	EMISSION = ALBEDO * mix(hemi_chao, hemi_ceu, 0.5 * nw.y + 0.5) * fora.y;  // luz do céu (hemisfério), sem sombra como no Three
 }
 uniform float atenuacao_godot = 0.9;  // omni_attenuation das tochas (vagrant.gd)
+uniform bool ver_sombra = false;      // diagnóstico --ver-sombra: o corpo mostra só a sombra do sol (branco = sem sombra)
 void light() {
 	if (LIGHT_IS_DIRECTIONAL) {  // o sol: a cor e a meia Lambert da página; do Godot só a sombra (ATTENUATION)
-		DIFFUSE_LIGHT += sol_cor * (0.2 + 0.4 * (dot(NORMAL, LIGHT) + 1.0)) * ATTENUATION * fora.x;
+		// o Godot zera a sombra nas faces de costas para o sol mesmo sem nada projetando (medido 21/11 com o corpo sem
+		// sombra); a página ali dá a meia luz. shortcut: de costas para o sol, sem a sombra das árvores; trocar se as costas
+		// na sombra de uma árvore aparecerem claras demais
+		float nl = dot(NORMAL, LIGHT);
+		float sombra_sol = mix(1.0, ATTENUATION, smoothstep(-0.05, 0.2, nl));
+		DIFFUSE_LIGHT += ver_sombra ? vec3(sombra_sol) : sol_cor * (0.2 + 0.4 * (nl + 1.0)) * sombra_sol * fora.x;
 	} else {
 	// queda da página (j^2 D0^2/(d^2+D0^2), D0 = 4) no lugar da do Godot; do Godot fica só a sombra: ATTENUATION dividida
 	// pela queda que o Godot aplicaria nessa distância. A tocha é achada pela direção da luz (a mais alinhada)
