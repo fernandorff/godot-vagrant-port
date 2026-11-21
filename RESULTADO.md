@@ -225,3 +225,10 @@ Origem: **[medido]** = rodado nesta noite; **[dedução]** = não provado.
 
 - fps com as animações tocando (21/11, vista padrão, 3 rodadas): 213,6 · 220,8 · 222,5, **mediana 220,8 fps** (era 274,0 sem animação; a página faz 314,4). As animações custam ~0,9 ms por quadro **[medido; 2 de 3 rodadas fora do método, placa em até 11% antes, RustDesk ligado]**.
 - Curva S nas trocas de gesto: o Godot mistura em linha reta (teste `--mistura`, 2 poses paradas do pulo em 0,5 s: 0,20 / 0,48 / 0,79 do caminho em 20/50/80% do tempo) **[medido]**. O `play_with_capture` com `TRANS_SINE` não serve: nas trilhas de esqueleto ele pula direto para a pose final (1,00 já em 20%) **[medido]**. A curva S de verdade pede trocar o AnimationPlayer por um AnimationTree com `xfade_curve` **[dedução, não testado]**; por ora fica linear.
+
+## Celular (21/11)
+
+- Controles de toque (`toque.gd`): metade esquerda da tela anda, metade direita gira a câmera, botões A, X, B, Y, LB, RB, Corre e menu. Viram eventos de controle, então usam o código do controle. Teste `--toque --toque-teste`: andou 4,32, câmera girou −1,77 rad, pulou **[medido]**.
+  - O Godot gera um clique de mouse para cada toque; esse clique escolhia outro boneco por baixo do joystick. A camada de toque agora engole esses cliques **[medido: antes, o escolhido trocava e o A não pulava]**.
+- Export web (preset `Web`, renderizador de compatibilidade só na web, texturas ETC2/ASTC para celular): `../web-export/vagrant/`, motor 40 MB + pacote 61 MB. No navegador do PC: ~72 fps, sem erro no console **[medido]**. Não testado num celular de verdade.
+- Endereços: rede local `http://192.168.3.10:8095/index.html` e público `https://vagrant.fernandorffdev.com` (rota no túnel jellyfin para `host.docker.internal:8095`; 200 e pacote inteiro em 16 s **[medido]**). Os dois dependem do PC ligado e do servidor `python -m http.server 8095` rodando.
